@@ -14,8 +14,6 @@
     let xp = 100;
     let text = "Volgende";
 
-
-
     const changePage = () => {
         page++;
         updateProgression();
@@ -39,7 +37,8 @@
             telefoon,
             xp,
             profielAfbeelding,
-            user_ID: Math.floor(Math.random() * 10000)
+            user_ID: Math.floor(Math.random() * 10000),
+            current: true
         };
 
         UserStore.update(users => {
@@ -52,26 +51,24 @@
 
 {#if page == 1}
 <h1 class="welkom">Welkom {voornaam} {achternaam} <i class="fa-solid fa-hand"></i></h1>
-<form on:submit|preventDefault={changePage}>
 <p class="naam">Wat is uw naam?</p>
 <input type="text" name="voornaam" bind:value={voornaam} placeholder="Uw voornaam"/>
 <input type="text" name="achternaam" bind:value={achternaam} placeholder="Uw achternaam"/><br /><br /><br /><br />
 <div class="containerButton">
-    <button class="terug" on:click={ () => { page--; progression = progression - 22;}}><i class="fa-solid fa-angle-left"></i></button><Button class="leftbtn" {text} />
+    <button class="terug" on:click={ () => {dispatch('closeStart')}}><i class="fa-solid fa-angle-left"></i></button><Button on:click={changePage} {text} />
     <div id="Progression">
         <progress id="Progression-Bar" class="prog" max="100" value="{progression}"></progress>
     </div>
 </div>
-</form>
 {/if}
 
 {#if page == 2}
-<h1 class="welkom">We hebben wat gegevens nodig<br /> voor uw persoonlijke account:</h1>
+<h1 class="welkom">We hebben wat gegevens nodig voor uw account:</h1>
 <form on:submit|preventDefault={changePage}>
 <p class="naam">Wat is uw leeftijd?</p>
 <input type="number" name="leeftijd" bind:value={leeftijd} placeholder="Uw leeftijd"/><br /><br /><br /><br />
 <div class="containerButton">
-    <button class="terug" on:click={ () => { page--; progression = progression - 22;}}><i class="fa-solid fa-angle-left"></i></button><Button class="leftbtn" {text} />
+    <button class="terug" on:click={ () => { page--; progression = progression - 22;}}><i class="fa-solid fa-angle-left"></i></button><Button {text} />
     <div id="Progression">
         <progress id="Progression-Bar" class="prog" max="100" value="{progression}"></progress>
     </div>
@@ -86,7 +83,7 @@
 <input type="text" name="email" bind:value={email} placeholder="Uw email"/>
 <input type="text" name="telefoonnummer" bind:value={telefoon} placeholder="Uw telefoonnummer"/><br /><br /><br />
 <div class="containerButton">
-    <button class="terug" on:click={ () => { page--; progression = progression - 22;}}><i class="fa-solid fa-angle-left"></i></button><Button class="leftbtn" {text} />
+    <button class="terug" on:click={ () => { page--; progression = progression - 22;}}><i class="fa-solid fa-angle-left"></i></button><Button {text} />
     <div id="Progression">
         <progress id="Progression-Bar" class="prog" max="100" value="{progression}"></progress>
     </div>
@@ -138,7 +135,7 @@
 
 <div class="containerButton">
 <form on:submit|preventDefault={changePage}>
-<button class="terug" on:click={ () => { page--; dispatch('ProgressionD')}}><i class="fa-solid fa-angle-left"></i></button><Button class="leftbtn" {text}/>
+<button class="terug" on:click={ () => { page--; dispatch('ProgressionD')}}><i class="fa-solid fa-angle-left"></i></button><Button {text}/>
 <div id="Progression">
     <progress id="Progression-Bar" class="prog" max="100" value="{progression}"></progress>
 </div>
@@ -191,6 +188,10 @@ p, h1{
      letter-spacing: 1px;
      border:none;
      margin-right: 10px;
+ }
+
+ .leftbtn {
+    border-radius: 0 0 15px 0;
  }
 
  .terug {
@@ -340,5 +341,9 @@ progress::-webkit-progress-bar {
 	  	   -webkit-linear-gradient(45deg, rgba(138,179,134,1) 0%, rgba(49,149,12,1) 100%);
   border-radius: 0 0 10px 0;
   transition: 1s easy-in-out;
+}
+
+h1 {
+    padding: 0 20px;
 }
 </style>

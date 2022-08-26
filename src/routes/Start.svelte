@@ -8,10 +8,15 @@
     const openAccount = () => {
         dispatch('openAccount');
     }
+
+    const openModules = () => {
+        dispatch('openModules');
+    }
 </script>
 
     <div class="container">
-    <button on:click={openAccount}>{text}</button>
+    <button on:click={openAccount}>Creëer account</button>
+    <button on:click={openModules}>Modules</button>
     </div>
 
 <style>
@@ -33,6 +38,7 @@
      font-size: 14px;
      letter-spacing: 1px;
      border:none;
+     margin-right: 50px;
  }
 
  button:hover {

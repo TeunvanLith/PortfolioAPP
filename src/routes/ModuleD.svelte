@@ -41,15 +41,17 @@
         grid-gap: 20px;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1400px) {
         .containerModuleD {
         grid-template-columns: 1fr 1fr;
+        padding-bottom: 200px;
          }   
     }
 
-    @media (max-width: 680px) {
+    @media (max-width: 1000px) {
             .containerModuleD {
             grid-template-columns: 1fr;
+            padding-bottom: 200px;
         }
     }
 </style>

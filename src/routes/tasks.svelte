@@ -1,19 +1,57 @@
 <script>
-  import Tasks from './stores/TaskStore';
-    
+  import Tasks from './stores/TaskStore'
+  import { onMount } from 'svelte';
+  export let a
+  export let b
+  export let c
+  export let d
+  export let theme = "#fff"
+
 </script>
 
-    <div class="tasks">
-        <p class="head-tasks">Tasks</p>
+    <div class="tasks" style="border: 1px solid {theme}; border-bottom: 0px">
+        <p class="head-tasks" style="color: {theme}">Tasks</p>
         <div class="containertasks">
         {#each $Tasks as task}
-            {#if task.module == "D"}
-            {#if task.completed =="&#9744;"}
-            <p class="icon">{@html task.completed}</p> <p class="task">{task.task}</p><br />
+            {#if a}
+                {#if task.module == "A"}
+                    {#if task.completed =="&#9744;"}
+                    <p class="icon">{@html task.completed}</p> <p class="task">{task.task}</p><br />
+                    {/if}
+                    {#if task.completed =="&#9745;"}
+                    <p class="icon">{@html task.completed}</p> <p class="task doorstreept">{task.task}</p><br />
+                    {/if}
+                {/if}
             {/if}
-            {#if task.completed =="&#9745;"}
-            <p class="icon">{@html task.completed}</p> <p class="task doorstreept">{task.task}</p><br />
+            {#if b}
+                {#if task.module == "B"}
+                    {#if task.completed =="&#9744;"}
+                    <p class="icon">{@html task.completed}</p> <p class="task">{task.task}</p><br />
+                    {/if}
+                    {#if task.completed =="&#9745;"}
+                    <p class="icon">{@html task.completed}</p> <p class="task doorstreept">{task.task}</p><br />
+                    {/if}
+                {/if}
             {/if}
+            {#if c}
+                {#if task.module == "C"}
+                    {#if task.completed =="&#9744;"}
+                    <p class="icon">{@html task.completed}</p> <p class="task">{task.task}</p><br />
+                    {/if}
+                    {#if task.completed =="&#9745;"}
+                    <p class="icon">{@html task.completed}</p> <p class="task doorstreept">{task.task}</p><br />
+                    {/if}
+                {/if}
+            {/if}
+            {#if d}
+                {#if task.module == "D"}
+                    {#if task.completed =="&#9744;"}
+                    <p class="icon">{@html task.completed}</p> <p class="task">{task.task}</p><br />
+                    {/if}
+                    {#if task.completed =="&#9745;"}
+                    <p class="icon">{@html task.completed}</p> <p class="task doorstreept">{task.task}</p><br />
+                    {/if}
+                {/if}
             {/if}
         {/each}
     </div>
@@ -21,16 +59,16 @@
 
 <style>
 .tasks {
-    position: absolute;
+    position: fixed;
     background-color: #222;
     min-width: 400px;
     width: 30%;
-    height: 150px;
     bottom: 0px;
-    right: 35%;
+    left: 50%;
+    transform: translateX(-50%);
     border-radius: 20px 20px 0 0;
-    border: 1px solid #b60f55;
     border-bottom: 0;
+    padding: 10px;
 }
 
 .doorstreept {

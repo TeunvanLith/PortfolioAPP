@@ -2,6 +2,7 @@
     import TiptopStore from "./stores/TiptopStore"
     import { fade } from 'svelte/transition'
     import Users from './stores/UserStore'
+    import TaskStore from './stores/TaskStore'
 
     // DATA
     let tip:string;
@@ -21,6 +22,7 @@
                     let copyUsers = [...users];
                     let changeUser = copyUsers.find((user) => user.voornaam == "Inge");
                     changeUser.xp = changeUser.xp + xp;
+                    check = true;
                     return copyUsers;
 
                 })
@@ -59,6 +61,13 @@
             TiptopStore.update (e => {
                 return [data, ...e];
             })    
+
+            TaskStore.update(task => {
+                    let copyTasks = [...task];
+                    let changeTask = copyTasks.find((task) => task.id == "004");
+                    changeTask.completed = "&#9745;";
+                    return copyTasks;
+            })
         }
     };
 </script>
@@ -117,7 +126,7 @@ h1 {
 
 .intro {
     background-color: #001528;
-    border: 1px solid #b60f55;
+    border: 1px solid orange;
     color: #fff;
     padding: 10px;
     font-weight: 600;
@@ -144,7 +153,7 @@ button{
      letter-spacing: 1px;
      border:none;
      margin-top: 20px;
-     border: 1px solid #b60f55;
+     border: 1px solid orange;
  }
 
  button:hover {
@@ -170,7 +179,7 @@ button{
 }
 
 .input:focus {
-    border: 2px solid #b60f55;
+    border: 2px solid orange;
     outline: none;
 }
 
@@ -194,7 +203,7 @@ button{
     height: 150px;
     width: 150px;
     background-color: #001528;
-    border: 1px solid #b60f55;
+    border: 1px solid orange;
     color: #fff;
     padding: 10px;
     border-radius: 15px 0 15px 0;
@@ -217,7 +226,7 @@ button{
 }
 
 .plus {
-    color: #d10057;
+    color: orange;
 }
 
 .minus {
@@ -226,6 +235,6 @@ button{
 
 .alerts {
     padding: 10px;
-    color: red;
+    color: orange;
 }
 </style>

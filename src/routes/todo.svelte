@@ -117,7 +117,7 @@ input {
 }
 
 input:focus {
-    border: 2px solid #b60f55;
+    border: 2px solid #11753c;
     outline: none;
 }
 
@@ -125,7 +125,7 @@ button{
      color: white;
      height: 50px;
      width: 130px;
-     background-color: #04a7f4;
+     background-color: #11753c;
      cursor: pointer;
      font-weight: 700;
      font-size: 14px;
@@ -137,7 +137,7 @@ button{
  }
 
  button:hover {
-    background: #0485c1;
+    background: #093f20;
     color: #fff;
 }
 
@@ -200,5 +200,9 @@ ul {
 .priotext {
     display: inline-block;
     margin-left: 20px;
+}
+
+h1 {
+    margin-bottom: 50px;
 }
 </style>

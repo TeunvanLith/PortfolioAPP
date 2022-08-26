@@ -10,7 +10,7 @@
  #backToMain {
         position: absolute;
         right: 50px;
-        top: 750px;
+        bottom: 10%;
         height: 100px;
         width: 100px;
         border-radius: 10px;

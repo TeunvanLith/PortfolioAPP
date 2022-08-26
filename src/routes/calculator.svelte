@@ -210,7 +210,7 @@ equals.addEventListener('click', () => {
   }
 
   .ac {
-    background-color: #04a7f4;
+    background-color: #11753c;
     cursor: pointer;
   }
 
@@ -220,7 +220,7 @@ equals.addEventListener('click', () => {
   }
 
   .equals {
-    background-color: #04a7f4;
+    background-color: #11753c;
     cursor: pointer;
   }
 

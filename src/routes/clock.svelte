@@ -102,7 +102,7 @@
         position: absolute;
         width: 150px;
         height: 150px;
-        border: 2px solid #b60f55;
+        border: 2px solid #11753c;
         border-radius: 77px;
         background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
  background-blend-mode: multiply,multiply;
@@ -128,7 +128,7 @@
     #hours {
         width: 4px;
         height: 35px; 
-        background-color: #b60f55;
+        background-color: #11753c;
         transform-origin: 0 100%;
     }
 
@@ -140,7 +140,7 @@
     }
 
     #seconds {
-        background-color: #04a7f4;
+        background-color: #484848;
         width: 4px;
         height: 70px;
         transform-origin: 0 100%;
@@ -150,7 +150,7 @@
         position: absolute;
         height: 20px;
         width: 20px;
-        background-color: rgba(84, 84, 84, 0.4);
+        background-color: rgba(135, 135, 135, 0.4);
         line-height: 20px;
         left: 100px;
         bottom: 35px;
@@ -158,7 +158,7 @@
         color: #222;
         transform: rotate(45deg);
         font-weight: 800;
-        border: 1px solid #b60f55;
+        border: 1px solid #11753c;
         border-radius: 5px 0 5px 0;
     }
 
@@ -166,7 +166,7 @@
      color: white;
      height: 50px;
      width: 130px;
-     background-color: #04a7f4;
+     background-color: #11753c;
      cursor: pointer;
      font-weight: 700;
      font-size: 14px;
@@ -177,8 +177,7 @@
     }
 
     button:hover {
-        background: #046b9b;
+        background: #093f20;
         color: #fff;
-        box-shadow: 5px 5px rgb(42, 42, 42)
     }
 </style>

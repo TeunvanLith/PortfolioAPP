@@ -9,7 +9,7 @@
     let colorA = "aqua"
     let colorB = "orange"
     let colorC = "#b60f55"
-    export let colorD = "red"
+    export let colorD = "#11753c"
 
     let moduleA = false
     let moduleB = false

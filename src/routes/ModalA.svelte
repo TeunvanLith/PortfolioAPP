@@ -6,7 +6,7 @@
 <div class="backdrop">
 
 <div transition:fade class="modal">
-    <Account on:closeModal />
+    <Account on:closeModal on:closeStart/>
 </div>
 
 
@@ -22,7 +22,8 @@
 }
 
 .modal {
-    width: 800px;
+    width: 80%;
+    max-width: 800px;
     height: 400px;
     border-radius: 30px 0 30px 0;
     margin: 10% auto;

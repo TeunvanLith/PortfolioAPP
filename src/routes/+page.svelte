@@ -1,4 +1,5 @@
-<script>
+<script type="typescript">
+	import { onMount } from "svelte";
     import './global.css'
     import ModalA from "./ModalA.svelte"
     import Start from "./Start.svelte"
@@ -10,29 +11,21 @@
 	import ModuleD from "./ModuleD.svelte"
 	import Back from "./back.svelte"
 	import Tasks from "./tasks.svelte"
+	import Snake from "./Snake.svelte"
 
-    let account = false
-	let start = false
-	let stats = true
-	let modules = false
-	let moduleA = false
-	let moduleB = true
-	let moduleC = false
-	let moduleD = false
-	let clock = false
-	let back = false
-	let task = false
-
-	const toggleAccount = () => {
-		start = false
-		account = true
-	}
-
-	const closeCreate = () => {
-		account = false
-		stats = true
-		modules = true;
-	}
+    let account:boolean = false
+	let start:boolean = false
+	let stats:boolean = false
+	let modules:boolean = false
+	let moduleA:boolean = false
+	let moduleB:boolean = false
+	let moduleC:boolean = false
+	let moduleD:boolean = false
+	let clock:boolean = false
+	let back:boolean = false
+	let task:boolean = false
+	let tasks:boolean;
+	let snake:boolean = true;
 
 	const toggleBack = () => {
 		if (moduleD || moduleC || moduleB || moduleA ) {
@@ -43,27 +36,37 @@
 			modules = true;
 		}
 	}
+
+	let theme = "orange";
+
+	
+
 </script>
 
 <main>
+
+	{#if snake}
+	<Snake />
+	{/if}
+
     {#if start}
-	<Start on:openAccount={toggleAccount}/>
+	<Start on:openAccount={ () => {start = false; account = true;}} on:openModules={ () => {start = false; modules = true;}}/>
 	{/if}
 
     {#if account}
-	<ModalA  on:closeModal={closeCreate}/>
+	<ModalA on:closeStart={ () => {start = true; account = false}} on:closeModal={ () => {account = false; modules = true;}}/>
 	{/if}
 
-    {#if stats}
+    {#if modules || moduleA || moduleB || moduleC || moduleD}
 	<Stats />
 	{/if}
 
 	{#if modules}
 	<Modules 
-	on:showModuleA={ () => {moduleA = true; modules = false;}} 
-	on:showModuleB={ () => {moduleB = true; modules = false;}}
-	on:showModuleC={ () => {moduleC = true; modules = false;}} 
-	on:showModuleD={ () => {moduleD = true; modules = false;}}/>
+	on:showModuleA={ () => {moduleA = true; modules = false; theme="aqua"}} 
+	on:showModuleB={ () => {moduleB = true; modules = false; theme="orange"}}
+	on:showModuleC={ () => {moduleC = true; modules = false; theme="#b60f55"}} 
+	on:showModuleD={ () => {moduleD = true; modules = false; theme="#11753c"}}/>
 	{/if}
 
     {#if moduleA}
@@ -86,13 +89,12 @@
 	<Back on:toggleBack={toggleBack}/>
 	{/if}
 
-	{#if task && moduleD}
-	<Tasks />
-	{/if}
+	{#if moduleB || moduleD }
+	<Tasks theme={theme} a={moduleA} b={moduleB} c={moduleC} d={moduleD}/>
+	{/if} 
 </main>
 
 <style>
-
 
 	main {
 		text-align: center;
