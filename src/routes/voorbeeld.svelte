@@ -1,23 +1,25 @@
 <script>
-    import './global.css'
-    import ModalA from "./ModalA.svelte"
-    import Start from "./Start.svelte"
-    import Stats from "./stats.svelte"
-    import Modules from "./Modules.svelte"
+	import ModalA from "./ModalA.svelte"
+	import Start from "./Start.svelte"
+	import Stats from "../public/stats.svelte"
+	import Modules from "./Modules.svelte"
 	import ModuleA from "./ModuleA.svelte"
 	import ModuleB from "./ModuleB.svelte"
 	import ModuleC from "./ModuleC.svelte"
 	import ModuleD from "./ModuleD.svelte"
-	import Back from "./back.svelte"
-	import Tasks from "./tasks.svelte"
+	import Back from "../public/back.svelte"
+	import Tasks from "../public/tasks.svelte"
 
-    let account = false
+	import  {createEventDispatcher} from 'svelte';
+    const dispatch = createEventDispatcher();
+
+	let account = false
 	let start = false
 	let stats = true
 	let modules = false
 	let moduleA = false
-	let moduleB = true
-	let moduleC = false
+	let moduleB = false
+	let moduleC = true
 	let moduleD = false
 	let clock = false
 	let back = false
@@ -28,7 +30,7 @@
 		account = true
 	}
 
-	const closeCreate = () => {
+	const closeCreate = (e) => {
 		account = false
 		stats = true
 		modules = true;
@@ -43,18 +45,19 @@
 			modules = true;
 		}
 	}
+
 </script>
 
 <main>
-    {#if start}
+	{#if start}
 	<Start on:openAccount={toggleAccount}/>
 	{/if}
 
-    {#if account}
+	{#if account}
 	<ModalA  on:closeModal={closeCreate}/>
 	{/if}
 
-    {#if stats}
+	{#if stats}
 	<Stats />
 	{/if}
 
@@ -66,7 +69,7 @@
 	on:showModuleD={ () => {moduleD = true; modules = false;}}/>
 	{/if}
 
-    {#if moduleA}
+	{#if moduleA}
 	<ModuleA />
 	{/if}
 
@@ -89,11 +92,10 @@
 	{#if task && moduleD}
 	<Tasks />
 	{/if}
+
 </main>
 
 <style>
-
-
 	main {
 		text-align: center;
 		padding: 0;
