@@ -1,5 +1,7 @@
 <script>
     import { onMount} from "svelte";
+    import Tasks from '../routes/stores/TaskStore';
+    import Users from '../routes/stores/UserStore';
     let root;
     
 onMount(() => {
@@ -7,7 +9,6 @@ onMount(() => {
 const grid = root.querySelector('#grid')
 const startButton = root.querySelector('#start')
 const scoreDisplay = root.querySelector('#score')
-
 // Playing Field
 const width = 15
 let squares = []
@@ -21,6 +22,7 @@ let appleIndex = 0
 
 // Scores
 let score = 0
+let updated = false;
 
 // Timers
 let intervalTime = 1000
@@ -29,12 +31,12 @@ let timerId = 0
 
 // Creating Playing Field
 function createGrid() {
-    //create 100 of these elements with a for loop
+    //create 225 of these elements with a for loop
     for (let i=0; i < width*width; i++) {
      //create element
-    const square = root.createElement('div')
+    const square = document.createElement("div")
     //add styling to the element
-    square.classList.add('square')
+    square.classList.add("snakesquare")
     //put the element into our grid
     grid.appendChild(square)
     //push it into a new squares array    
@@ -43,8 +45,28 @@ function createGrid() {
 }
 createGrid()
 
+const taskChecked = () => {
+    Tasks.update(tasks => {
+        let copyTasks = [...tasks];
+        let taskToUpdate = copyTasks.find((task) => task.id == "006");
+        taskToUpdate.completed = "&#9745;";
+        addXP(200)
+        return copyTasks;
+    })
+}
+
+    const addXP = (xp) => {
+        Users.update(users => {
+                let copyUsers = [...users];
+                let changeUser = copyUsers.find((user) => user.voornaam == "Inge");
+                changeUser.xp = changeUser.xp + xp;
+               
+                return copyUsers;
+
+            })
+}
 // Starting Snakes
-currentSnake.forEach(index => squares[index].classList.add('snake'))
+currentSnake.forEach(index => squares[index].classList.add('snakesnake'))
 
 function startMoving() {
    move();
@@ -52,9 +74,9 @@ function startMoving() {
 
 function startGame() {
     //remove the snakes
-    currentSnake.forEach(index => squares[index].classList.remove('snake'))
+    currentSnake.forEach(index => squares[index].classList.remove('snakesnake'))
     //remove the apple
-    squares[appleIndex].classList.remove('apple')
+    squares[appleIndex].classList.remove('snakeapple')
     clearInterval(timerId)
     currentSnake = [2,1,0]
     score = 0
@@ -64,34 +86,38 @@ function startGame() {
     intervalTime = 1000
     generateApple()
     //readd the class of snake to our new snakes
-    currentSnake.forEach(index => squares[index].classList.add('snake'))
+    currentSnake.forEach(index => squares[index].classList.add('snakesnake'))
     timerId = setInterval(startMoving, intervalTime)
 }
 
 function move() {
+    if (score === 10 && !updated) {
+        taskChecked()
+        updated = true;
+    }
     if (
         (currentSnake[0] + width >= width*width && direction === width) || //if snake has hit bottom
         (currentSnake[0] % width === width-1 && direction === 1) || //if snake has hit right wall
         (currentSnake[0] % width === 0 && direction === -1) || //if snake has hit left wall
         (currentSnake[0] - width < 0 && direction === -width) || //if snake has hit top
-        squares[currentSnake[0] + direction].classList.contains('snake')
+        squares[currentSnake[0] + direction].classList.contains('snakesnake')
     )
     return clearInterval(timerId)
 
     //remove last element from our currentSnake array
     const tail = currentSnake.pop()
     //remove styling from last element
-    squares[tail].classList.remove('snake')
+    squares[tail].classList.remove('snakesnake')
     //add square in direction we are heading
     currentSnake.unshift(currentSnake[0] + direction)
     //add styling so we can see it
     
     //deal with snake head gets apple
-    if (squares[currentSnake[0]].classList.contains('apple')) {
+    if (squares[currentSnake[0]].classList.contains('snakeapple')) {
         //remove the class of apple
-        squares[currentSnake[0]].classList.remove('apple')
+        squares[currentSnake[0]].classList.remove('snakeapple')
         //grow our snake by adding class of snake to it
-        squares[tail].classList.add('snake')
+        squares[tail].classList.add('snakesnake')
         console.log(tail)
         //grow our snake array
         currentSnake.push(tail)
@@ -110,21 +136,16 @@ function move() {
         timerId = setInterval(startMoving, intervalTime)
     }
   
-    squares[currentSnake[0]].classList.add('snake')
+    squares[currentSnake[0]].classList.add('snakesnake')
 }
 
 function generateApple() {
     do {
         appleIndex = Math.floor(Math.random() * squares.length)
-    } while (squares[appleIndex].classList.contains('snake'))
-    squares[appleIndex].classList.add('apple')
+    } while (squares[appleIndex].classList.contains('snakesnake'))
+    squares[appleIndex].classList.add('snakeapple')
 } 
 generateApple()
-
-// 39 is right arrow
-// 38 is for the up arrow
-// 37 is for the left arrow
-// 40 is for the down arrow
 
 function control(e) {
     if (e.keyCode === 39) {
@@ -145,67 +166,57 @@ startButton.addEventListener('click', startGame)
 </script>
 
 <div bind:this={root}>
-    <h1>Snake VS Snake Game</h1>
+    <h1>Snake</h1>
+    <h2>Score&nbsp;<span id="score"></span></h2>
+    <div id="grid" class="grid"></div>
     <button id="start">Start/Restart</button>
-    <h2>Score Groen <span id="score"></span></h2>
-    <h2>Score Rood <span id="enemyScore"></span></h2>
-    <div id="grid"></div>
-    <script src="index.pack.js"></script>
 </div>
 
 <style>
-    html, body {
-    margin: 10;
-    padding: 10;
-    background-color: #333;
+h2 { 
+    margin: 20px auto;
 }
-
-h1, h2 {
-    color: white;
-    text-align: center;
-}
-
-#start {
-    display: flex;
-    margin: auto;
-    background-color: white;
-    align-content: center;
-    padding: 20px;
-    font-weight: 500;
-}
-
 .grid {
     display: flex;
     flex-wrap: wrap;
     margin: auto;
     width: 300px;
     height: 300px;
-    border: solid 2px black;
-    background-color: white;
-    background-image: url("https://i.ibb.co/5F8hLpy/Background.png")
+    border: solid 2px #04a7f4;
+    background-color: rgba(20,20,20,0.01)
 }
 
-.square {
+:global.snakesquare {
     width: 20px;
     height: 20px;
+    border-radius: 6px;
+    box-sizing: border-box;
 }
 
-.snake {
-    background-color: transparent;
+:global.snakesnake {
     background-image: url("https://i.ibb.co/yyDp5yS/bluesnake.png");
     box-shadow: inset 1px 1px black;
 }
 
-.eSnake {
-    background-color: transparent;
-    background-image: url("https://i.ibb.co/zmqddtH/redsnake.png");
-    box-shadow: inset 1px 1px black;
-}
-
-.apple {
-    background-color: transparent;
+:global.snakeapple {
     background-image: url("https://i.ibb.co/jvqgCvN/apple.png");
 }
 
+button{
+     color: white;
+     height: 50px;
+     width: 130px;
+     border-radius: 15px 0 15px 0;
+     background-color: #04a7f4;
+     cursor: pointer;
+     font-weight: 700;
+     font-size: 14px;
+     letter-spacing: 1px;
+     border:none;
+     margin: 20px auto;
+ }
 
+ button:hover {
+    background: #0183bf;
+}
 </style>

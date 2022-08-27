@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 
 const TaskStore = writable([{
     module: "A",
-    task: "Schiet een vijandig schip kapot.",
+    task: "Behaal een score van 10 met Snake",
     completed: 	"&#9744;",
     id: "006",
 },

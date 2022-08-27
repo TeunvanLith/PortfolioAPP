@@ -112,6 +112,7 @@
         width: 90%;
         margin: 0 auto;
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
     }
 
@@ -121,6 +122,7 @@
 
     .containerlinks {
         width: 700px;
+        margin-bottom: 100px;
     }
 
     .introtext {

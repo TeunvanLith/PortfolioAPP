@@ -6,7 +6,7 @@
     import { onMount } from 'svelte';
 
     let text = "Kies"
-    let colorA = "aqua"
+    let colorA = "#04a7f4"
     let colorB = "orange"
     let colorC = "#b60f55"
     export let colorD = "#11753c"
@@ -29,7 +29,8 @@
     <div transition:fade class="containerModule" style="border: 2px solid {colorA}">
         <h1 style="color:{colorA}">Games</h1>
         <div class="infoModule">
-        <h2>Space Invaders</h2>
+        <h2>Space Invaders</h2><br />
+        <h2>Snake</h2>
         </div>
 
         <Button {text} on:click={ () => {dispatch('showModuleA')}}/>
@@ -77,9 +78,10 @@
         width: 80%;
         margin: 0px auto;
         padding-top: 100px;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-gap: 50px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding-bottom: 100px;
     }
 
     .containerModule {
@@ -89,6 +91,7 @@
         background-color: rgba(31, 31, 31, .5);
         border: 1px solid rgb(31, 31, 31);
         position: relative;
+        margin: 50px 10px;
     }
 
     h1 {

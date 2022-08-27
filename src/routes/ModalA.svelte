@@ -24,7 +24,7 @@
 .modal {
     width: 80%;
     max-width: 800px;
-    height: 400px;
+    min-height: 350px;
     border-radius: 30px 0 30px 0;
     margin: 10% auto;
     background: linear-gradient(90deg, rgba(38,38,115,1) 0%, rgba(0,212,255,1) 100%);

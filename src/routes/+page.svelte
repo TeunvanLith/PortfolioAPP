@@ -14,7 +14,7 @@
 	import Snake from "./Snake.svelte"
 
     let account:boolean = false
-	let start:boolean = false
+	let start:boolean = true
 	let stats:boolean = false
 	let modules:boolean = false
 	let moduleA:boolean = false
@@ -25,7 +25,7 @@
 	let back:boolean = false
 	let task:boolean = false
 	let tasks:boolean;
-	let snake:boolean = true;
+	let snake:boolean = false;
 
 	const toggleBack = () => {
 		if (moduleD || moduleC || moduleB || moduleA ) {
@@ -63,7 +63,7 @@
 
 	{#if modules}
 	<Modules 
-	on:showModuleA={ () => {moduleA = true; modules = false; theme="aqua"}} 
+	on:showModuleA={ () => {moduleA = true; modules = false; theme="#04a7f4"}} 
 	on:showModuleB={ () => {moduleB = true; modules = false; theme="orange"}}
 	on:showModuleC={ () => {moduleC = true; modules = false; theme="#b60f55"}} 
 	on:showModuleD={ () => {moduleD = true; modules = false; theme="#11753c"}}/>
@@ -89,7 +89,7 @@
 	<Back on:toggleBack={toggleBack}/>
 	{/if}
 
-	{#if moduleB || moduleD }
+	{#if moduleB || moduleD || moduleA }
 	<Tasks theme={theme} a={moduleA} b={moduleB} c={moduleC} d={moduleD}/>
 	{/if} 
 </main>
@@ -102,10 +102,7 @@
 		margin: 0;
 		width: 100vw;
 		height: 100vh;
-		background-image: url("https://i.ibb.co/jH1dkrD/5039684.jpg");
-		object-fit: contain;
-		position: relative;
-		background-repeat: repeat-y;
+		
 	}
 
 </style>

@@ -188,6 +188,7 @@ button{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 50px;
+    padding-bottom: 100px;
 }
 
 .cardz {

@@ -52,6 +52,7 @@
 {#if page == 1}
 <h1 class="welkom">Welkom {voornaam} {achternaam} <i class="fa-solid fa-hand"></i></h1>
 <p class="naam">Wat is uw naam?</p>
+
 <input type="text" name="voornaam" bind:value={voornaam} placeholder="Uw voornaam"/>
 <input type="text" name="achternaam" bind:value={achternaam} placeholder="Uw achternaam"/><br /><br /><br /><br />
 <div class="containerButton">
@@ -211,7 +212,7 @@ p, h1{
     background-color: #001528;
     border-radius: 10px 0 10px 0;
     width: 600px;
-    margin: 70px auto 10px;
+    margin: 70px auto 30px;
     padding: 10px 0 10px 0;
 }
 
@@ -268,6 +269,11 @@ input:focus {
     margin: 20px auto;
 }
 
+@media (max-width: 900px) {
+    .containerIcon {
+        grid-template-columns: 1fr 1fr;
+    }
+}
 .containerIcon input[type=radio]{
     position: absolute;
     opacity: 0;
@@ -302,12 +308,7 @@ input[type="radio"]:checked ~ label {
 }
 
 .containerButton {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    bottom: 20px;
+    padding-bottom: 20px;
 }
 
 :-webkit-autofill { 
