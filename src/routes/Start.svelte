@@ -38,7 +38,7 @@
      font-size: 14px;
      letter-spacing: 1px;
      border:none;
-     margin-right: 50px;
+     margin: 0 auto;
  }
 
  button:hover {
