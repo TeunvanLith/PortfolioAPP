@@ -25,8 +25,9 @@
 
     @media (max-width: 768px) {
         #backToMain {
-            font-size: 50px;
-            top: 50px;
+            position: fixed;
+            font-size: 60px;
+            top: 20px;
             right: 20px;
         }
     }
