@@ -86,7 +86,7 @@
 	{/if}
 
 	{#if moduleA || moduleB || moduleC || moduleD}
-	<Back on:toggleBack={toggleBack}/>
+	<Back on:toggleBack={toggleBack} theme={theme}/>
 	{/if}
 
 	{#if moduleB || moduleD || moduleA }

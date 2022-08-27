@@ -1,9 +1,10 @@
 <script>
    import { createEventDispatcher } from 'svelte';
     const dispatch = createEventDispatcher();
+    export let theme;
 </script>
 
-<div id="backToMain" on:click={ () => {dispatch('toggleBack')}}><i class="fa-solid fa-circle-chevron-left"></i></div>
+<div id="backToMain" onMouseOver="this.style.color='{theme}'" on:click={ () => {dispatch('toggleBack')}}><i class="fa-solid fa-circle-chevron-left"></i></div>
 
 
 <style>
@@ -21,7 +22,6 @@
     }
 
     #backToMain:hover {
-        color: #04a7f4;
-        cursor: poin
+        cursor: pointer;
     }
 </style>

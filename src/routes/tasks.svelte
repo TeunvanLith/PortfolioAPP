@@ -19,7 +19,7 @@
                     <p class="icon">{@html task.completed}</p> <p class="task">{task.task}</p><br />
                     {/if}
                     {#if task.completed =="&#9745;"}
-                    <p class="icon">{@html task.completed}</p> <p class="task doorstreept">{task.task}</p><br />
+                    <p class="icon">{@html task.completed}</p> <p class="task" style="text-decoration: line-through {theme} 3px;">{task.task}</p><br />
                     {/if}
                 {/if}
             {/if}
@@ -29,7 +29,7 @@
                     <p class="icon">{@html task.completed}</p> <p class="task">{task.task}</p><br />
                     {/if}
                     {#if task.completed =="&#9745;"}
-                    <p class="icon">{@html task.completed}</p> <p class="task doorstreept">{task.task}</p><br />
+                    <p class="icon">{@html task.completed}</p> <p class="task" style="text-decoration: line-through {theme} 3px;">{task.task}</p><br />
                     {/if}
                 {/if}
             {/if}
@@ -39,7 +39,7 @@
                     <p class="icon">{@html task.completed}</p> <p class="task">{task.task}</p><br />
                     {/if}
                     {#if task.completed =="&#9745;"}
-                    <p class="icon">{@html task.completed}</p> <p class="task doorstreept">{task.task}</p><br />
+                    <p class="icon">{@html task.completed}</p> <p class="task" style="text-decoration: line-through {theme} 3px;">{task.task}</p><br />
                     {/if}
                 {/if}
             {/if}
@@ -49,7 +49,7 @@
                     <p class="icon">{@html task.completed}</p> <p class="task">{task.task}</p><br />
                     {/if}
                     {#if task.completed =="&#9745;"}
-                    <p class="icon">{@html task.completed}</p> <p class="task doorstreept">{task.task}</p><br />
+                    <p class="icon">{@html task.completed}</p> <p class="task" style="text-decoration: line-through {theme} 3px;">{task.task}</p><br />
                     {/if}
                 {/if}
             {/if}
@@ -72,7 +72,7 @@
 }
 
 .doorstreept {
-    text-decoration: line-through rgb(151, 7, 94) 3px;
+    text-decoration: line-through rgb(0, 108, 29) 3px;
 }
 
 .icon {
