@@ -12,8 +12,6 @@
         position: absolute;
         right: 10%;
         bottom: 10%;
-        height: 100px;
-        width: 100px;
         border-radius: 10px;
         text-align: center;
         color: white;
@@ -27,9 +25,9 @@
 
     @media (max-width: 768px) {
         #backToMain {
-            height: 30px;
-            width: 30px;
-            bottom: 20%;
+            font-size: 50px;
+            top: 50px;
+            right: 20px;
         }
     }
 </style>
