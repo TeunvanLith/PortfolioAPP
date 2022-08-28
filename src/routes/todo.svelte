@@ -160,6 +160,7 @@ button{
     border-radius: 15px 0 15px 0;
     position: relative;
     margin-top: 10px;
+    background: #222;
 }
 
 .red {

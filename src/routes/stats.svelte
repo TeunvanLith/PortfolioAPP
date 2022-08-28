@@ -16,11 +16,14 @@
         height: 150px;
         margin: 0 auto;
         border-radius: 0 0 10px 10px;
-        background-color: rgba(40, 40, 40, 0.7);
+        background-color: rgba(0, 0, 0, 0.7);
         display: relative;
         margin-bottom: 50px;
     }
 
+    .containerNaam {
+        font-family: 'Dancing Script', cursive;
+    }
     .containerAvatar img{
         width: 75px;
         height: 75px;

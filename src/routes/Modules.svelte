@@ -19,8 +19,8 @@
     onMount( () => {
         setTimeout(() => {moduleA = true},300)
         setTimeout(() => {moduleB = true},600)
-        setTimeout(() => {moduleC = true},900)
-        setTimeout(() => {moduleD = true},1200)
+        setTimeout(() => {moduleD = true},900)
+        setTimeout(() => {moduleC = true},1200)
     })
 
 </script>

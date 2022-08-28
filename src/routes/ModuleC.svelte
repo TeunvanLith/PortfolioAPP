@@ -74,9 +74,9 @@
         <div class="skills bct" >
             <h2>HTML</h2>
             <progress id="xpbar" class="xpbar" max="100" value="{html}"></progress>
-            <h2>CSS / SASS</h2>
+            <h2>CSS</h2>
             <progress id="xpbar" class="xpbar" max="100" value="{css}"></progress>
-            <h2>JAVASCRIPT / TYPESCRIPT </h2>
+            <h2>JAVASCRIPT </h2>
             <progress id="xpbar" class="xpbar" max="100" value="{js}"></progress>
             <h2>SVELTE</h2>
             <progress id="xpbar" class="xpbar" max="100" value="{svelte}"></progress>
@@ -196,5 +196,8 @@
         color: #b60f55;
     }
 
+    h2 {
+        margin-top: 5px;
+    }
 
 </style>

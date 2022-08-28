@@ -175,15 +175,15 @@ startButton.addEventListener('click', startGame)
     <h1>Snake</h1>
     <h2>Score&nbsp;<span id="score"></span></h2>
     <div id="grid" class="grid"></div>
-    <div class="containerButtons">
     <button id="start">Start/Restart</button>
-    {#if window.innerWidth < 1200}
-        <div class="buttons-snake" on:click={ () => {control(40)}}>Up</div>
-        <div class="buttons-snake" on:click={ () => {control(38)}}>Down</div>
-        <div class="buttons-snake" on:click={ () => {control(37)}}>Left</div>
-        <div class="buttons-snake" on:click={ () => {control(39)}}>Right</div>
+    {#if window.innerWidth < 1400}
+        <div class="mobileButtons">
+            <div class="buttons-snake up" on:click={ () => {control(38)}}>Up</div><br />
+            <div class="buttons-snake left" on:click={ () => {control(37)}}>Left</div>
+            <div class="buttons-snake down" on:click={ () => {control(40)}}>Down</div>
+            <div class="buttons-snake right" on:click={ () => {control(39)}}>Right</div>
+        </div>
     {/if}
-    </div>
 </div>
 
 <style>
@@ -236,19 +236,38 @@ button{
 
 .buttons-snake {
     cursor: pointer;
-    margin: 5px auto;
+    margin: 5px 5px;
     width: 100px;
     height: 30px;
     line-height: 30px;
     background: #222;
     padding: 5px;
+    border: 1px solid #04a7f4;
 }
 
-.containerButtons {
-    display: flex;
-    flex-wrap: wrap;
-    width: 250px;
-    margin: 50px auto;
+.mobileButtons {
+    display: grid;
+    grid-template-areas: 
+    ". up ."
+    "left down right";
+    width: 360px;
+    margin: 10px auto;
+    padding-bottom: 120px;
 }
 
+.up {
+    grid-area: up;
+}
+
+.left {
+    grid-area: left;
+}
+
+.right {
+    grid-area: right;
+}
+
+.down {
+    grid-area: down;
+}
 </style>
