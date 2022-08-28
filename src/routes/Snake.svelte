@@ -2,20 +2,38 @@
     import { onMount} from "svelte";
     import Tasks from '../routes/stores/TaskStore';
     import Users from '../routes/stores/UserStore';
+    export let theme;
+
     let root;
-    
+    let arrowLeft;
+    let arrowRight;
+    let arrowUp;
+    let arrowDown;
+    let direction = 1;
+    const width = 15;
+
+    function control(e) {
+    if (e.keyCode === 39 || e == 39) {
+        direction = 1
+    } else if (e.keyCode === 38 || e == 38) {
+        direction = -width
+    } else if (e.keyCode === 37 || e == 37) {
+        direction = -1
+    } else if (e.keyCode === 40 || e == 40) {
+        direction = +width
+    }
+}
+
 onMount(() => {
 
 const grid = root.querySelector('#grid')
 const startButton = root.querySelector('#start')
 const scoreDisplay = root.querySelector('#score')
 // Playing Field
-const width = 15
 let squares = []
 
 // Snakes
 let currentSnake = [2,1,0]
-let direction = 1
 
 // Apples
 let appleIndex = 0
@@ -147,18 +165,6 @@ function generateApple() {
 } 
 generateApple()
 
-function control(e) {
-    if (e.keyCode === 39) {
-        direction = 1
-    } else if (e.keyCode === 38) {
-        direction = -width
-    } else if (e.keyCode === 37) {
-        direction = -1
-    } else if (e.keyCode === 40) {
-        direction = +width
-    }
-}
-
 document.addEventListener('keydown', control)
 startButton.addEventListener('click', startGame)
 
@@ -169,7 +175,15 @@ startButton.addEventListener('click', startGame)
     <h1>Snake</h1>
     <h2>Score&nbsp;<span id="score"></span></h2>
     <div id="grid" class="grid"></div>
+    <div class="containerButtons">
     <button id="start">Start/Restart</button>
+    {#if window.innerWidth < 1200}
+        <div class="buttons-snake" on:click={ () => {control(40)}}>Up</div>
+        <div class="buttons-snake" on:click={ () => {control(38)}}>Down</div>
+        <div class="buttons-snake" on:click={ () => {control(37)}}>Left</div>
+        <div class="buttons-snake" on:click={ () => {control(39)}}>Right</div>
+    {/if}
+    </div>
 </div>
 
 <style>
@@ -219,4 +233,22 @@ button{
  button:hover {
     background: #0183bf;
 }
+
+.buttons-snake {
+    cursor: pointer;
+    margin: 5px auto;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    background: #222;
+    padding: 5px;
+}
+
+.containerButtons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 250px;
+    margin: 50px auto;
+}
+
 </style>

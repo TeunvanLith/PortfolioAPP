@@ -2,7 +2,7 @@
     import Snake from "./Snake.svelte"
 </script>
 
-<Snake />
+<Snake theme />
 
 <style>
 

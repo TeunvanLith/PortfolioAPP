@@ -22,4 +22,10 @@
     background: #ffffff;
     color: #04a7f4;
 }
+
+@media (max-width: 900px) {
+    button {
+        width: 40%;
+    }
+}
 </style>

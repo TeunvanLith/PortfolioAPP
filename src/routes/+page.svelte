@@ -44,11 +44,6 @@
 </script>
 
 <main>
-
-	{#if snake}
-	<Snake />
-	{/if}
-
     {#if start}
 	<Start on:openAccount={ () => {start = false; account = true;}} on:openModules={ () => {start = false; modules = true;}}/>
 	{/if}
@@ -70,7 +65,7 @@
 	{/if}
 
     {#if moduleA}
-	<ModuleA />
+	<ModuleA theme={theme}/>
 	{/if}
 
 	{#if moduleB}

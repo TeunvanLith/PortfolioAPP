@@ -50,7 +50,7 @@
 </script>
 
 {#if page == 1}
-<h1 class="welkom">Welkom {voornaam} {achternaam} <i class="fa-solid fa-hand"></i></h1>
+<h1 class="welkom">Welkom <i style="transform:rotate(10deg)" class="fa-solid fa-hand"></i></h1>
 <p class="naam">Wat is uw naam?</p>
 
 <input type="text" name="voornaam" bind:value={voornaam} placeholder="Uw voornaam"/>
@@ -64,7 +64,7 @@
 {/if}
 
 {#if page == 2}
-<h1 class="welkom">We hebben wat gegevens nodig voor uw account:</h1>
+<h1 class="welkom"> Ha {voornaam} {achternaam}!</h1>
 <form on:submit|preventDefault={changePage}>
 <p class="naam">Wat is uw leeftijd?</p>
 <input type="number" name="leeftijd" bind:value={leeftijd} placeholder="Uw leeftijd"/><br /><br /><br /><br />
@@ -156,6 +156,7 @@
         <img class="iconSamenvatting" src="{profielAfbeelding}" alt="profiel">
     </div>
 </div>
+
 <div class="containerButton">
     <button class="terug" on:click={ () => { page--; progression = progression - 22;}}><i class="fa-solid fa-angle-left"></i></button><Button {text} on:click={closeModal}/>
     <div id="Progression">
@@ -172,6 +173,8 @@ p, h1{
 
 .welkom {
      padding-top: 40px;
+     font-family: 'Dancing Script', cursive;
+     font-weight: 700;
  }
 
 .naam {
@@ -189,10 +192,6 @@ p, h1{
      letter-spacing: 1px;
      border:none;
      margin-right: 10px;
- }
-
- .leftbtn {
-    border-radius: 0 0 15px 0;
  }
 
  .terug {
@@ -241,6 +240,7 @@ input {
     padding: 10px;
     font-weight: 600;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 input:focus {
@@ -265,6 +265,8 @@ input:focus {
     width: 70%;
     position: relative;
     display: grid;
+    justify-items: center;
+    justify-content: center;
     grid-template-columns: 1fr 1fr 1fr;
     margin: 20px auto;
 }
@@ -272,6 +274,26 @@ input:focus {
 @media (max-width: 900px) {
     .containerIcon {
         grid-template-columns: 1fr 1fr;
+    }
+    button {
+        width: 40%;
+    }
+    .containerText {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0 80px;
+    background-color: #001528;
+    border-radius: 10px 0 10px 0;
+    width: 90%;
+    margin: 70px auto 30px;
+    padding: 60px 0 10px 0;
+}
+}
+
+@media (max-width: 600px) {
+    .containerIcon {
+        grid-template-columns: 1fr;
     }
 }
 .containerIcon input[type=radio]{
@@ -320,7 +342,8 @@ input[type="radio"]:checked ~ label {
 /* Progression Bar */
 #Progression {
    height: 21px;
-   width: 340px;
+   width: 82%;
+   max-width: 340px;
    margin: 10px auto;
    border-radius: 0 0 10px 0;
    bottom: -100px;

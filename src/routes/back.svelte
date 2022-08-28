@@ -6,7 +6,6 @@
 
 <div id="backToMain" onMouseOver="this.style.color='{theme}'" onMouseOut="this.style.color='#fff'" on:click={ () => {dispatch('toggleBack')}}><i class="fa-solid fa-circle-chevron-left"></i></div>
 
-
 <style>
  #backToMain {
         position: absolute;

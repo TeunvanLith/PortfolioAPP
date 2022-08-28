@@ -94,6 +94,8 @@
         margin: 50px 10px;
     }
 
+    @media (max-width: 1000px)
+
     h1 {
         margin-top: 50px;
         margin-bottom: 280px;
