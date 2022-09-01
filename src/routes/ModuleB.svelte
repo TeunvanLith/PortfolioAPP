@@ -1,7 +1,8 @@
 <script>
     import TipnTop from "../routes/TipnTop.svelte"
+    export let ID;
 </script>
 
-<TipnTop />
+<TipnTop ID={ID} />
 
 <style></style>

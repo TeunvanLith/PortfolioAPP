@@ -4,17 +4,17 @@
     import Prog60 from "./progression60.svelte"
     import Prog30 from "./progression30.svelte"
     export let theme
+    export let ID
     import { onMount } from "svelte"
 
 
     const addXP = (xp) => {
         UserStore.update(users => {
                 let copyUsers = [...users];
-                let changeUser = copyUsers.find((user) => user.current == true);
+                let changeUser = copyUsers.find((user) => user.user_ID == ID);
                 changeUser.xp = changeUser.xp + xp;
                
                 return copyUsers;
-
             })
     }
 
@@ -151,31 +151,7 @@
         border-radius: 15px 0 15px 0;
     }
 
-    button{
-        color: white;
-        height: 50px;
-        width: 130px;
-        background-color: #001528;
-        cursor: pointer;
-        font-weight: 700;
-        font-size: 14px;
-        letter-spacing: 1px;
-        border:none;
-        margin-top: 20px;
-        border: 1px solid #b60f55;
-    }
-
-    button:hover {
-        background: #353535;
-        color: #b60f55;
-    }
-
     h1 {
         color: #b60f55;
     }
-
-    h2 {
-        margin-top: 5px;
-    }
-
 </style>

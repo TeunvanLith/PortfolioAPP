@@ -2,7 +2,7 @@
 import { onMount } from 'svelte';
 import Tasks from '../routes/stores/TaskStore';
 import Users from '../routes/stores/UserStore';
-
+export let ID;
 let root;
 
 onMount(() => {
@@ -49,7 +49,7 @@ const checkMillion = () => {
     const addXP = (xp) => {
         Users.update(users => {
                 let copyUsers = [...users];
-                let changeUser = copyUsers.find((user) => user.voornaam == "Inge");
+                let changeUser = copyUsers.find((user) => user.user_ID == ID);
                 changeUser.xp = changeUser.xp + xp;
                
                 return copyUsers;

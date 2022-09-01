@@ -1,4 +1,4 @@
-<script type="typescript">
+<script>
 	import { onMount } from "svelte";
     import './global.css'
     import ModalA from "./ModalA.svelte"
@@ -13,19 +13,19 @@
 	import Tasks from "./tasks.svelte"
 	import Snake from "./Snake.svelte"
 
-    let account:boolean = false
-	let start:boolean = true
-	let stats:boolean = false
-	let modules:boolean = false
-	let moduleA:boolean = false
-	let moduleB:boolean = false
-	let moduleC:boolean = false
-	let moduleD:boolean = false
-	let clock:boolean = false
-	let back:boolean = false
-	let task:boolean = false
-	let tasks:boolean;
-	let snake:boolean = false;
+    let account = false
+	let start = true
+	let stats = false
+	let modules = false
+	let moduleA = false
+	let moduleB = false
+	let moduleC = false
+	let moduleD = false
+	let clock = false
+	let back = false
+	let task = false
+	let tasks;
+	let snake = false;
 
 	const toggleBack = () => {
 		if (moduleD || moduleC || moduleB || moduleA ) {
@@ -39,7 +39,7 @@
 
 	let theme = "orange";
 
-	
+	let currentID;
 
 </script>
 
@@ -49,11 +49,11 @@
 	{/if}
 
     {#if account}
-	<ModalA on:closeStart={ () => {start = true; account = false}} on:closeModal={ () => {account = false; modules = true;}}/>
+	<ModalA on:closeStart={ () => {start = true; account = false}} on:closeModal={ (e) => {account = false; modules = true; currentID = e.detail.ID; console.log(currentID)}}/>
 	{/if}
 
     {#if modules || moduleA || moduleB || moduleC || moduleD}
-	<Stats />
+	<Stats ID={currentID} />
 	{/if}
 
 	{#if modules}
@@ -65,19 +65,19 @@
 	{/if}
 
     {#if moduleA}
-	<ModuleA theme={theme}/>
+	<ModuleA ID={currentID}/>
 	{/if}
 
 	{#if moduleB}
-	<ModuleB />
+	<ModuleB ID={currentID}/>
 	{/if}
 
 	{#if moduleC}
-	<ModuleC theme= {theme}/>
+	<ModuleC theme={theme} ID={currentID}/>
 	{/if}
 
 	{#if moduleD}
-	<ModuleD />
+	<ModuleD ID={currentID} />
 	{/if}
 
 	{#if moduleA || moduleB || moduleC || moduleD}

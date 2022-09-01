@@ -1,14 +1,14 @@
 <script>
-    import { onMount } from 'svelte';
-    import Tasks from '../routes/stores/TaskStore';
-    import Users from '../routes/stores/UserStore';
-
+    import { onMount } from 'svelte'
+    import Tasks from '../routes/stores/TaskStore'
+    import Users from '../routes/stores/UserStore'
+    export let ID
     // GET TIME //
 
-    let getHours;
-    let getMinutes;
-    let getSeconds;
-    let getDate;
+    let getHours
+    let getMinutes
+    let getSeconds
+    let getDate
 
     const getTime = () => {
         const time = new Date();
@@ -42,7 +42,7 @@
     const addXP = (xp) => {
         Users.update(users => {
                 let copyUsers = [...users];
-                let changeUser = copyUsers.find((user) => user.voornaam == "Inge");
+                let changeUser = copyUsers.find((user) => user.user_ID == ID);
                 changeUser.xp = changeUser.xp + xp;
                
                 return copyUsers;

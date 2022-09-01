@@ -2,7 +2,7 @@
     import { onMount} from "svelte";
     import Tasks from '../routes/stores/TaskStore';
     import Users from '../routes/stores/UserStore';
-    export let theme;
+    export let ID;
 
     let root;
     let arrowLeft;
@@ -27,6 +27,7 @@
 
 onMount(() => {
 
+console.log(ID);
 
 const grid = root.querySelector('#grid')
 const startButton = root.querySelector('#start')
@@ -84,7 +85,7 @@ const taskChecked = () => {
     const addXP = (xp) => {
         Users.update(users => {
                 let copyUsers = [...users];
-                let changeUser = copyUsers.find((user) => user.voornaam == "Inge");
+                let changeUser = copyUsers.find((user) => user.user_ID == ID);
                 changeUser.xp = changeUser.xp + xp;
                
                 return copyUsers;
@@ -120,7 +121,7 @@ function startGame() {
 }
 
 function move() {
-    if (score === 10 && !updated) {
+    if (score === 3 && !updated) {
         taskChecked()
         updated = true;
     }

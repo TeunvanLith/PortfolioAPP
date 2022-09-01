@@ -8,6 +8,7 @@
     let clock = false;
     let calculator = false;
     let todo = false;
+    export let ID;
 
     onMount (() => {
         setTimeout(() => {calculator = true},500)
@@ -19,15 +20,15 @@
 <div class="containerModuleD" transition:fade>
     
     {#if calculator}
-    <Calculator />
+    <Calculator ID={ID} />
     {/if}
 
     {#if todo}
-    <Todo />
+    <Todo ID={ID}/>
     {/if}
 
     {#if clock}
-    <Clock />
+    <Clock ID={ID}/>
     {/if}
 
 </div>

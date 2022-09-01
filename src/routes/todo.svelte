@@ -2,6 +2,7 @@
     import { fade } from 'svelte/transition';
     import Tasks from './stores/TaskStore';
     import Users from './stores/UserStore';
+    export let ID;
 
     let tdName = '';
     let tdTime;
@@ -47,7 +48,7 @@
     const addXP = (xp) => {
         Users.update(users => {
                 let copyUsers = [...users];
-                let changeUser = copyUsers.find((user) => user.voornaam == "Inge");
+                let changeUser = copyUsers.find((user) => user.user_ID == ID);
                 changeUser.xp = changeUser.xp + xp;
                
                 return copyUsers;

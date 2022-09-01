@@ -1,8 +1,9 @@
 <script>
     import Snake from "./Snake.svelte"
+    export let ID;
 </script>
 
-<Snake theme />
+<Snake ID={ID}/>
 
 <style>
 

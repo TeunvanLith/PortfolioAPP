@@ -14,6 +14,7 @@
     let xp = 100;
     let text = "Volgende";
 
+    let currentUser = 0;
 
     let alert = "";
     let alertVisible = false;
@@ -90,17 +91,21 @@
             leeftijd, 
             email,
             telefoon,
-            xp,
+            xp: 0,
             profielAfbeelding,
             user_ID: Math.floor(Math.random() * 10000),
             current: true
         };
 
+        currentUser = user.user_ID;
+
         UserStore.update(users => {
             return [user, ...users];
         })
 
-        dispatch('closeModal')
+        dispatch('closeModal', {
+            ID: currentUser
+        });
     }
 </script>
 

@@ -1,12 +1,18 @@
 <script>
     import UserStore from '../routes/stores/UserStore'
+    export let ID;
+    console.log(ID)
 </script>
 
 <div class="container">
-    <div class="containerAvatar"><img src="{$UserStore[0].profielAfbeelding}" alt="avatar"></div>
-    <div class="containerNaam">{$UserStore[0].voornaam} {$UserStore[0].achternaam}</div>
-    <progress id="xpbar" class="xpbar" max="1000" value="{$UserStore[0].xp}"></progress>
-    <div class="containerXP"><p class="XP">{$UserStore[0].xp} xp</p></div>
+    {#each $UserStore as user}
+        {#if user.user_ID === ID}
+    <div class="containerAvatar"><img src="{user.profielAfbeelding}" alt="avatar"></div>
+    <div class="containerNaam">{user.voornaam} {user.achternaam}</div>
+    <progress id="xpbar" class="xpbar" max="1000" value="{user.xp}"></progress>
+    <div class="containerXP"><p class="XP">{user.xp} xp</p></div>
+        {/if}
+    {/each}
 </div>
 
 
