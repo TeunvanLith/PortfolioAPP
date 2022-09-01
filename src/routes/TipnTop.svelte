@@ -153,6 +153,7 @@ button{
      letter-spacing: 1px;
      border:none;
      margin-top: 20px;
+     margin-bottom: 20px;
      border: 1px solid orange;
  }
 
