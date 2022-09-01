@@ -15,8 +15,10 @@
 </script>
 
     <div class="container">
+        <div class="Button">
     <button on:click={openAccount}>Creëer account</button>
     <button on:click={openModules}>Modules</button>
+        </div>
     </div>
 
 <style>
@@ -38,7 +40,8 @@
      font-size: 14px;
      letter-spacing: 1px;
      border:none;
-     margin: 0 auto;
+     margin: 20px auto;
+     display: block;
  }
 
  button:hover {

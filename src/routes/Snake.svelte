@@ -26,9 +26,12 @@
 
 onMount(() => {
 
+
 const grid = root.querySelector('#grid')
 const startButton = root.querySelector('#start')
 const scoreDisplay = root.querySelector('#score')
+
+
 // Playing Field
 let squares = []
 
@@ -63,6 +66,10 @@ function createGrid() {
 }
 createGrid()
 
+// Setup score
+scoreDisplay.innerHTML = score
+
+// XP / TASK
 const taskChecked = () => {
     Tasks.update(tasks => {
         let copyTasks = [...tasks];
@@ -83,6 +90,7 @@ const taskChecked = () => {
 
             })
 }
+
 // Starting Snakes
 currentSnake.forEach(index => squares[index].classList.add('snakesnake'))
 
@@ -178,15 +186,20 @@ startButton.addEventListener('click', startGame)
     <button id="start">Start/Restart</button>
     {#if window.innerWidth < 1400}
         <div class="mobileButtons">
-            <div class="buttons-snake up" on:click={ () => {control(38)}}>Up</div><br />
-            <div class="buttons-snake left" on:click={ () => {control(37)}}>Left</div>
-            <div class="buttons-snake down" on:click={ () => {control(40)}}>Down</div>
-            <div class="buttons-snake right" on:click={ () => {control(39)}}>Right</div>
+            <div class="buttons-snake up" on:click={ () => {control(38)}}><i class="fa-solid fa-circle-chevron-up"></i></div><br />
+            <div class="buttons-snake left" on:click={ () => {control(37)}}><i class="fa-solid fa-circle-chevron-left"></i></div>
+            <div class="buttons-snake down" on:click={ () => {control(40)}}><i class="fa-solid fa-circle-chevron-down"></i></div>
+            <div class="buttons-snake right" on:click={ () => {control(39)}}><i class="fa-solid fa-circle-chevron-right"></i></div>
         </div>
     {/if}
 </div>
 
 <style>
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+        }
 h2 { 
     margin: 20px auto;
 }
@@ -216,6 +229,9 @@ h2 {
     background-image: url("https://i.ibb.co/jvqgCvN/apple.png");
 }
 
+.fa-regular {
+    color: white;
+}
 button{
      color: white;
      height: 50px;
@@ -236,13 +252,13 @@ button{
 
 .buttons-snake {
     cursor: pointer;
-    margin: 5px 5px;
-    width: 100px;
-    height: 30px;
-    line-height: 30px;
-    background: #222;
+    margin: 0px 5px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    color: #04a7f4;
     padding: 5px;
-    border: 1px solid #04a7f4;
+    font-size: 50px;
 }
 
 .mobileButtons {
@@ -250,6 +266,7 @@ button{
     grid-template-areas: 
     ". up ."
     "left down right";
+    justify-content: center;
     width: 360px;
     margin: 10px auto;
     padding-bottom: 120px;

@@ -71,10 +71,6 @@
     padding: 10px;
 }
 
-.doorstreept {
-    text-decoration: line-through rgb(0, 108, 29) 3px;
-}
-
 .icon {
     font-size: 20px;
 }
