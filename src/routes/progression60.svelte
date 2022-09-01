@@ -1,9 +1,11 @@
 <script>
   export let text = "Undef"
   export let theme;
+  import { fade } from "svelte/transition"
+
 
 </script>
-<div class="circle-wrap">
+<div transition:fade class="circle-wrap">
     <div class="circle">
       <div class="mask full">
           <div class="fill" style="background-color: {theme}"></div>

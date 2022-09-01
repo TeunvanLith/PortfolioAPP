@@ -29,7 +29,6 @@
             top: 20px;
             right: 20px;
             height: 60px;
-            border: 1px solid red;
         }
     }
 </style>

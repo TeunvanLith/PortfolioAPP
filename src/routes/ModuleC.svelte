@@ -1,18 +1,11 @@
 <script>
-    import UserStore from "./stores/UserStore";
-    import Prog75 from "./progression75.svelte";
-    import Prog60 from "./progression60.svelte";
-    import Prog30 from "./progression30.svelte";
-    export let theme;
+    import UserStore from "./stores/UserStore"
+    import Prog75 from "./progression75.svelte"
+    import Prog60 from "./progression60.svelte"
+    import Prog30 from "./progression30.svelte"
+    export let theme
+    import { onMount } from "svelte"
 
-
-    // Skill values //
-    let html = 0;
-    let css = 0;
-    let js = 0;
-    let svelte = 0;
-    let github = 0;
-    let php = 0;
 
     const addXP = (xp) => {
         UserStore.update(users => {
@@ -25,16 +18,15 @@
             })
     }
 
-    const setValues = () => {
-         html = 90;
-         css = 80;
-         js = 60;
-         svelte = 70;
-         github = 50;
-         php = 20;
-         addXP(400);
-    };
+    let a = false;
+    let b = false;
+    let c = false;
 
+    onMount (() => {
+        setTimeout(() => {a = true},500)
+        setTimeout(() => {b = true},1000)
+        setTimeout(() => {c = true},1500)
+    })
 </script>
 
 <div class="containerModuleC">
@@ -77,13 +69,18 @@
             <div class="foto"><img src="https://i.ibb.co/HhmpcYx/Whats-App-Image-2022-08-21-at-3-16-18-PM.jpg" alt="Foto Teun van Lith"/></div>
         </div>
         <div class="skills bct" >
+            {#if a}
             <Prog75 theme={theme} text="HTML"/>
             <Prog75 theme={theme} text="CSS"/>
+            {/if}
+            {#if b}
             <Prog60 theme={theme} text="Javascript"/>
             <Prog60 theme={theme} text="Svelte"/>
+            {/if}
+            {#if c}
             <Prog60 theme={theme} text="Github"/>
             <Prog30 theme={theme} text="myPHP"/>
-
+            {/if}
         </div>
     </div>
 </div>
@@ -137,7 +134,7 @@
 
     .skills {
         width: 300px;
-        height: 100xp;
+        min-height: 400px;
         margin: 0 auto;
         margin-bottom: 50px;
         display: grid;
@@ -153,26 +150,6 @@
         text-align: center;
         border-radius: 15px 0 15px 0;
     }
-
-    progress[value] {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 150px;
-        height: 10px;
-        transition: 3s easy-in-out;
-}
-
-    progress::-webkit-progress-bar {
-        background: rgb(191, 191, 191);
-        border-radius: 5px;
-        border: 1px solid #222;
-}
-
-    progress[value]::-webkit-progress-value {
-        background-image: -webkit-linear-gradient(45deg, rgb(153, 4, 89) 0%, rgb(135, 46, 91) 100%);
-        border-radius: 5px; 
-        transition: 2s easy-in-out;
-}
 
     button{
         color: white;

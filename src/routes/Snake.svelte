@@ -11,6 +11,7 @@
     let arrowDown;
     let direction = 1;
     const width = 15;
+    let mobile = false;
 
     function control(e) {
     if (e.keyCode === 39 || e == 39) {
@@ -187,13 +188,16 @@ startButton.addEventListener('click', startGame)
     <h2>Score&nbsp;<span id="score"></span></h2>
     <div id="grid" class="grid"><div id="gameover" class="gameover"></div></div>
     <button id="start">Start/Restart</button>
-    {#if window.innerWidth < 1400}
-        <div class="mobileButtons">
-            <div class="buttons-snake up" on:click={ () => {control(38)}}><i class="fa-solid fa-circle-chevron-up"></i></div><br />
-            <div class="buttons-snake left" on:click={ () => {control(37)}}><i class="fa-solid fa-circle-chevron-left"></i></div>
-            <div class="buttons-snake down" on:click={ () => {control(40)}}><i class="fa-solid fa-circle-chevron-down"></i></div>
-            <div class="buttons-snake right" on:click={ () => {control(39)}}><i class="fa-solid fa-circle-chevron-right"></i></div>
-        </div>
+        {#if window.innerWidth < 1400 || mobile}
+            <div class="mobileButtons">
+                <div class="buttons-snake up" on:click={ () => {control(38)}}><i class="fa-solid fa-circle-chevron-up"></i></div><br />
+                <div class="buttons-snake left" on:click={ () => {control(37)}}><i class="fa-solid fa-circle-chevron-left"></i></div>
+                <div class="buttons-snake down" on:click={ () => {control(40)}}><i class="fa-solid fa-circle-chevron-down"></i></div>
+                <div class="buttons-snake right" on:click={ () => {control(39)}}><i class="fa-solid fa-circle-chevron-right"></i></div>
+            </div>
+        {/if}
+        {#if window.innerWidth > 1400}
+    <div class="uitleg"><button on:click={ () => {mobile = !mobile;}}>Buttons aan/uit</button><p>Gebruik de pijltjes toetsen om te snake te besturen.</p></div>
     {/if}
 </div>
 
@@ -276,6 +280,11 @@ button:hover {
     padding-bottom: 120px;
 }
 
+.uitleg {
+    padding-bottom: 100px;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+}
 .up {
     grid-area: up;
 }
