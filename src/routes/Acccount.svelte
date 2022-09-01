@@ -8,7 +8,7 @@
     let achternaam = ''
     let leeftijd = 0
     let email = ""
-    let telefoon = ""
+    let bedrijfsnaam = ""
     let profielAfbeelding = ""
     let page = 1
     let xp = 100;
@@ -51,10 +51,10 @@
                 check = false;
                 alert = "Het ingevoerde email klopt niet.";
             } 
-            if (telefoon.length <= 9) {
+            if (bedrijfsnaam.length <= 3) {
                 alertVisible = true;
                 check = false;
-                alert = "Het nummer klopt niet, aantal te kort.";
+                alert = "De bedrijfsnaam is te kort.";
             } else check = true;
         }
 
@@ -90,7 +90,7 @@
             achternaam,
             leeftijd, 
             email,
-            telefoon,
+            bedrijfsnaam,
             xp: 0,
             profielAfbeelding,
             user_ID: Math.floor(Math.random() * 10000),
@@ -153,7 +153,7 @@
 <form on:submit|preventDefault={changePage}>
 <p class="naam">Hoe kunnen we u bereiken?</p>
 <input type="text" name="email" bind:value={email} placeholder="Uw email"/>
-<input type="text" name="telefoonnummer" bind:value={telefoon} placeholder="Uw telefoonnummer"/>
+<input type="text" name="bedrijfsnaam" bind:value={bedrijfsnaam} placeholder="Uw bedrijfsnaam"/>
 {#if alertVisible} 
 <div class="alert">{alert}</div>
 {/if}
@@ -227,7 +227,7 @@
 <div class="containerText">
     <div class="profiel"><p>{voornaam} {achternaam}</p></div>
     <div class="profiel"><p>{leeftijd} jaar</p></div>
-    <div class="profiel"><p><i class="fa-solid fa-phone"></i> {telefoon}</p></div>
+    <div class="profiel"><p><i class="fa-regular fa-building"></i> {bedrijfsnaam}</p></div>
     <div class="profiel"><p><i class="fa-solid fa-at"></i> {email}</p></div>
     <div class="containerAfbeelding">
         <img class="iconSamenvatting" src="{profielAfbeelding}" alt="profiel">

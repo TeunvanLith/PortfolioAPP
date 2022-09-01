@@ -15,7 +15,6 @@
     let alertVisible = false;
 
     let introtext = "Geef uw mening!"
-
     let check = false;
 
     const addXP = (xp:number) => {
@@ -55,7 +54,7 @@
             const data = {
                 Tip: tip,
                 Top: top,
-                Naam: naam,
+                Naam: $Users.bedrijfsnaam,
                 ID: Math.floor(Math.random() * 100000)
             }
 

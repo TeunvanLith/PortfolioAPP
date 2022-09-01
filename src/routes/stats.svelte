@@ -12,7 +12,8 @@
         {#if user.user_ID === ID}
     <div class="containerAvatar"><img src="{user.profielAfbeelding}" alt="avatar"></div>
     <div class="containerNaam">{user.voornaam} {user.achternaam}</div>
-    <progress id="xpbar" class="xpbar" max="1000" value="{user.xp}"></progress>
+    <div class="containerBedrijf">{user.bedrijfsnaam}</div>
+    <progress id="xpbar" class="xpbar" max="1300" value="{user.xp}"></progress>
     <div class="containerXP"><p class="XP">{user.xp} xp</p></div>
         {/if}
     {/each}
@@ -37,6 +38,12 @@
     .containerNaam {
         font-family: 'Dancing Script', cursive;
     }
+
+    .containerBedrijf {
+        font-family: 'Dancing Script', cursive;
+        font-size: 12px;
+    }
+
     .containerAvatar img{
         width: 75px;
         height: 75px;

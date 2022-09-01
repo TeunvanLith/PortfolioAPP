@@ -13,7 +13,6 @@
         dispatch('openModules');
     }
 </script>
-
 <h1 class="welkom">Welkom op mijn portfolio!</h1><br />
     <div class="container">
         <div class="Button">
@@ -52,5 +51,10 @@ h1 {
     padding-top: 300px;
     font-family: 'Dancing Script', cursive;
     font-weight: 700;
+}
+
+.tenor-gif-embed {
+    height: 100px;
+    width: 100px;
 }
  </style> 
