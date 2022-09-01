@@ -1,7 +1,10 @@
 <script>
     import UserStore from '../routes/stores/UserStore'
     export let ID;
-    console.log(ID)
+    import { createEventDispatcher} from 'svelte';
+    const dispatch = createEventDispatcher();
+    import Button from './button.svelte';
+    let preset = true;
 </script>
 
 <div class="container">
@@ -13,13 +16,17 @@
     <div class="containerXP"><p class="XP">{user.xp} xp</p></div>
         {/if}
     {/each}
+    {#if !ID}
+    <h1>Maak account aan en verdien xp!</h1>
+    <button class="button" on:click={ () => {dispatch('account')}}>Creëer account</button>
+    {/if}
 </div>
 
 
 <style>
     .container {
         width: 250px;
-        height: 150px;
+        height: 160px;
         margin: 0 auto;
         border-radius: 0 0 10px 10px;
         background-color: rgba(0, 0, 0, 0.7);
@@ -66,5 +73,29 @@ progress[value]::-webkit-progress-value {
 	  	   -webkit-linear-gradient(45deg, rgb(153, 4, 89) 0%, rgb(135, 46, 91) 100%);
     border-radius: 5px; 
     transition: 1s easy-in-out;
+}
+
+h1 { 
+ padding: 10px;
+ font-family: 'Dancing Script', cursive;
+ font-weight: 700;
+}
+
+button{
+     color: #fff;
+     background-color: #04a7f4;
+     height: 50px;
+     width: 200px;
+     cursor: pointer;
+     font-weight: 700;
+     font-size: 14px;
+     letter-spacing: 1px;
+     border:none;
+     border-radius: 10px 0 10px 0;
+ }
+
+ button:hover {
+    background-color: #fff;
+    color: #04a7f4;
 }
 </style>

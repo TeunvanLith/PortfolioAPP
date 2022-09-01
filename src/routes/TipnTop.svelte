@@ -3,6 +3,7 @@
     import { fade } from 'svelte/transition'
     import Users from './stores/UserStore'
     import TaskStore from './stores/TaskStore'
+    export let ID;
 
     // DATA
     let tip:string;
@@ -20,7 +21,7 @@
     const addXP = (xp:number) => {
             Users.update(users => {
                     let copyUsers = [...users];
-                    let changeUser = copyUsers.find((user) => user.voornaam == "Inge");
+                    let changeUser = copyUsers.find((user) => user.user_ID == ID);
                     changeUser.xp = changeUser.xp + xp;
                     check = true;
                     return copyUsers;

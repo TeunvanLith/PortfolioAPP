@@ -27,8 +27,6 @@
 
 onMount(() => {
 
-console.log(ID);
-
 const grid = root.querySelector('#grid')
 const startButton = root.querySelector('#start')
 const scoreDisplay = root.querySelector('#score')
@@ -149,10 +147,8 @@ function move() {
         squares[currentSnake[0]].classList.remove('snakeapple')
         //grow our snake by adding class of snake to it
         squares[tail].classList.add('snakesnake')
-        console.log(tail)
         //grow our snake array
         currentSnake.push(tail)
-        console.log(currentSnake)
         //generate new apple
         generateApple()
         //add one to the score
@@ -161,9 +157,7 @@ function move() {
         scoreDisplay.textContent = score
         //speed up our snake
         clearInterval(timerId)
-        console.log(intervalTime)
         intervalTime = intervalTime * speed
-        console.log(intervalTime)
         timerId = setInterval(startMoving, intervalTime)
     }
   

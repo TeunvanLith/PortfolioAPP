@@ -5,6 +5,7 @@
     import Prog30 from "./progression30.svelte"
     export let theme
     export let ID
+    let updated = true;
     import { onMount } from "svelte"
 
 
@@ -26,6 +27,7 @@
         setTimeout(() => {a = true},500)
         setTimeout(() => {b = true},1000)
         setTimeout(() => {c = true},1500)
+        setTimeout(() => { if (updated) {addXP(200), updated = false;}},2000)
     })
 </script>
 

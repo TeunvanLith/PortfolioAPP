@@ -28,7 +28,6 @@
     {#if moduleA}
     <div transition:fade class="containerModule" style="border: 3px solid {colorA}">
         <h1 style="color:{colorA}">Games</h1>
-        <h2>Space Invaders</h2><br />
         <h2>Snake</h2>
         <div class="containerButton">
         <Button {text} on:click={ () => {dispatch('showModuleA')}}/>

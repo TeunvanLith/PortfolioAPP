@@ -53,7 +53,7 @@
 	{/if}
 
     {#if modules || moduleA || moduleB || moduleC || moduleD}
-	<Stats ID={currentID} />
+	<Stats ID={currentID} on:account={ () => {modules = false, account = true}} />
 	{/if}
 
 	{#if modules}
