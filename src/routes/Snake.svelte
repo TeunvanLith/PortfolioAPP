@@ -30,7 +30,7 @@ onMount(() => {
 const grid = root.querySelector('#grid')
 const startButton = root.querySelector('#start')
 const scoreDisplay = root.querySelector('#score')
-
+const gameOver = root.querySelector('#gameover')
 
 // Playing Field
 let squares = []
@@ -106,12 +106,14 @@ function startGame() {
     clearInterval(timerId)
     currentSnake = [2,1,0]
     score = 0
+    // remove gameOver
+    gameOver.innerHTML = "";
     //re add new score to browser
     scoreDisplay.innerHTML = score
     direction = 1
     intervalTime = 1000
     generateApple()
-    //readd the class of snake to our new snakes
+    //read the class of snake to our new snakes
     currentSnake.forEach(index => squares[index].classList.add('snakesnake'))
     timerId = setInterval(startMoving, intervalTime)
 }
@@ -127,9 +129,10 @@ function move() {
         (currentSnake[0] % width === 0 && direction === -1) || //if snake has hit left wall
         (currentSnake[0] - width < 0 && direction === -width) || //if snake has hit top
         squares[currentSnake[0] + direction].classList.contains('snakesnake')
-    )
+    ) {
+    gameOver.innerHTML = "Game Over!";
     return clearInterval(timerId)
-
+    }
     //remove last element from our currentSnake array
     const tail = currentSnake.pop()
     //remove styling from last element
@@ -182,7 +185,7 @@ startButton.addEventListener('click', startGame)
 <div bind:this={root}>
     <h1>Snake</h1>
     <h2>Score&nbsp;<span id="score"></span></h2>
-    <div id="grid" class="grid"></div>
+    <div id="grid" class="grid"><div id="gameover" class="gameover"></div></div>
     <button id="start">Start/Restart</button>
     {#if window.innerWidth < 1400}
         <div class="mobileButtons">
@@ -204,6 +207,7 @@ h2 {
     margin: 20px auto;
 }
 .grid {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     margin: auto;
@@ -246,7 +250,7 @@ button{
      margin: 20px auto;
  }
 
- button:hover {
+button:hover {
     background: #0183bf;
 }
 
@@ -286,5 +290,17 @@ button{
 
 .down {
     grid-area: down;
+}
+
+.gameover {
+    position: absolute;
+    color: red;
+    font-size: 50px;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    line-height: 300px;
 }
 </style>

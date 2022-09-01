@@ -8,7 +8,7 @@
 
 <style>
  #backToMain {
-        position: absolute;
+        position: fixed;
         right: 10%;
         bottom: 10%;
         border-radius: 10px;

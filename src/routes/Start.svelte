@@ -14,6 +14,7 @@
     }
 </script>
 
+<h1 class="welkom">Welkom op mijn portfolio!</h1><br />
     <div class="container">
         <div class="Button">
     <button on:click={openAccount}>Creëer account</button>
@@ -23,7 +24,6 @@
 
 <style>
 .container {
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,5 +46,11 @@
 
  button:hover {
     background: #0183bf;
+}
+
+h1 {
+    padding-top: 300px;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
 }
  </style> 

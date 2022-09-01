@@ -73,7 +73,7 @@
 	{/if}
 
 	{#if moduleC}
-	<ModuleC />
+	<ModuleC theme= {theme}/>
 	{/if}
 
 	{#if moduleD}

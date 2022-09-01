@@ -14,8 +14,63 @@
     let xp = 100;
     let text = "Volgende";
 
+
+    let alert = "";
+    let alertVisible = false;
+    let check = false;
+
     const changePage = () => {
+        if (page == 1){
+            if (voornaam.trim().length <= 2) {
+                alertVisible = true;
+                check = false;
+                alert = "De voornaam moet langer zijn dan 1 letter.";
+            } else if (achternaam.trim().length <= 3) {
+                alertVisible = true;
+                check = false;
+                alert = `${alert} De achternaam moet langer zijn dan 3 letters.`;
+            } else check = true;
+        }
+
+        if (page == 2){
+            if (leeftijd <= 17) {
+                alertVisible = true;
+                check = false;
+                alert = "De leeftijd moet hoger zijn dan 18.";
+            } else if (leeftijd >= 99) {
+                alertVisible = true;
+                check = false;
+                alert = "De leeftijd moet lager zijn dan 99.";
+            } else check = true;
+        }
+
+        if (page == 3){
+            if (email.length <= 17) {
+                alertVisible = true;
+                check = false;
+                alert = "Het ingevoerde email klopt niet.";
+            } 
+            if (telefoon.length <= 9) {
+                alertVisible = true;
+                check = false;
+                alert = "Het nummer klopt niet, aantal te kort.";
+            } else check = true;
+        }
+
+        if (page == 4){
+            if (profielAfbeelding.length <= 10) {
+                alertVisible = true;
+                check = false;
+                alert = "Kies profielafbeelding.";
+            } else check = true;
+        }
+
+        if (check) {
         page++;
+        alertVisible = false;
+        alert = "";
+        }
+
         updateProgression();
         if (page > 4) {
             text = "Start Tour";
@@ -53,8 +108,14 @@
 <h1 class="welkom">Welkom <i style="transform:rotate(10deg)" class="fa-solid fa-hand"></i></h1>
 <p class="naam">Wat is uw naam?</p>
 
-<input type="text" name="voornaam" bind:value={voornaam} placeholder="Uw voornaam"/>
-<input type="text" name="achternaam" bind:value={achternaam} placeholder="Uw achternaam"/><br /><br /><br /><br />
+    <input type="text" name="voornaam" bind:value={voornaam} placeholder="Uw voornaam"/>
+    <input type="text" name="achternaam" bind:value={achternaam} placeholder="Uw achternaam"/> 
+    {#if alertVisible} 
+    <div class="alert">{alert}</div>
+    {/if}
+    <br /><br /><br /><br />
+   
+
 <div class="containerButton">
     <button class="terug" on:click={ () => {dispatch('closeStart')}}><i class="fa-solid fa-angle-left"></i></button><Button on:click={changePage} {text} />
     <div id="Progression">
@@ -67,7 +128,12 @@
 <h1 class="welkom"> Ha {voornaam} {achternaam}!</h1>
 <form on:submit|preventDefault={changePage}>
 <p class="naam">Wat is uw leeftijd?</p>
-<input type="number" name="leeftijd" bind:value={leeftijd} placeholder="Uw leeftijd"/><br /><br /><br /><br />
+    <input type="number" name="leeftijd" bind:value={leeftijd} placeholder="Uw leeftijd"/>
+    {#if alertVisible} 
+    <div class="alert">{alert}</div>
+    {/if}
+<br /><br /><br /><br />
+
 <div class="containerButton">
     <button class="terug" on:click={ () => { page--; progression = progression - 22;}}><i class="fa-solid fa-angle-left"></i></button><Button {text} />
     <div id="Progression">
@@ -82,7 +148,11 @@
 <form on:submit|preventDefault={changePage}>
 <p class="naam">Hoe kunnen we u bereiken?</p>
 <input type="text" name="email" bind:value={email} placeholder="Uw email"/>
-<input type="text" name="telefoonnummer" bind:value={telefoon} placeholder="Uw telefoonnummer"/><br /><br /><br />
+<input type="text" name="telefoonnummer" bind:value={telefoon} placeholder="Uw telefoonnummer"/>
+{#if alertVisible} 
+<div class="alert">{alert}</div>
+{/if}
+<br /><br /><br />
 <div class="containerButton">
     <button class="terug" on:click={ () => { page--; progression = progression - 22;}}><i class="fa-solid fa-angle-left"></i></button><Button {text} />
     <div id="Progression">
@@ -133,7 +203,9 @@
 <div class="iconImg"><img src="https://i.ibb.co/P6t6fj8/Avatar-Male-03.jpg" alt="Male" /></div>
 </div>    
 </div>
-
+{#if alertVisible} 
+    <div class="alert">{alert}</div>
+{/if}
 <div class="containerButton">
 <form on:submit|preventDefault={changePage}>
 <button class="terug" on:click={ () => { page--; dispatch('ProgressionD')}}><i class="fa-solid fa-angle-left"></i></button><Button {text}/>
@@ -365,9 +437,22 @@ progress::-webkit-progress-bar {
 	  	   -webkit-linear-gradient(45deg, rgba(138,179,134,1) 0%, rgba(49,149,12,1) 100%);
   border-radius: 0 0 10px 0;
   transition: 1s easy-in-out;
-}
+} 
 
 h1 {
     padding: 0 20px;
 }
+
+/* ALERTS */
+.alert {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    color: white;
+    border-bottom: 2px solid red;
+    margin-bottom: 10px;
+}
+
 </style>

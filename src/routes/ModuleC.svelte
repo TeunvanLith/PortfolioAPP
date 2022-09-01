@@ -1,5 +1,10 @@
 <script>
     import UserStore from "./stores/UserStore";
+    import Prog75 from "./progression75.svelte";
+    import Prog60 from "./progression60.svelte";
+    import Prog30 from "./progression30.svelte";
+    export let theme;
+
 
     // Skill values //
     let html = 0;
@@ -72,20 +77,13 @@
             <div class="foto"><img src="https://i.ibb.co/HhmpcYx/Whats-App-Image-2022-08-21-at-3-16-18-PM.jpg" alt="Foto Teun van Lith"/></div>
         </div>
         <div class="skills bct" >
-            <h2>HTML</h2>
-            <progress id="xpbar" class="xpbar" max="100" value="{html}"></progress>
-            <h2>CSS</h2>
-            <progress id="xpbar" class="xpbar" max="100" value="{css}"></progress>
-            <h2>JAVASCRIPT </h2>
-            <progress id="xpbar" class="xpbar" max="100" value="{js}"></progress>
-            <h2>SVELTE</h2>
-            <progress id="xpbar" class="xpbar" max="100" value="{svelte}"></progress>
-            <h2>GITHUB</h2>
-            <progress id="xpbar" class="xpbar" max="100" value="{github}"></progress>
-            <h2>myPHP</h2>
-            <progress id="xpbar" class="xpbar" max="100" value="{php}"></progress>
-            <br />
-            <button on:click={setValues}>Bekijk skills:</button>
+            <Prog75 theme={theme} text="HTML"/>
+            <Prog75 theme={theme} text="CSS"/>
+            <Prog60 theme={theme} text="Javascript"/>
+            <Prog60 theme={theme} text="Svelte"/>
+            <Prog60 theme={theme} text="Github"/>
+            <Prog30 theme={theme} text="myPHP"/>
+
         </div>
     </div>
 </div>
@@ -139,15 +137,18 @@
 
     .skills {
         width: 300px;
+        height: 100xp;
         margin: 0 auto;
         margin-bottom: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
     }
 
     .bct {
         background-color: #001528;
         border: 1px solid #b60f55;
         color: #fff;
-        padding: 20px;
+        padding: 10px;
         font-weight: 600;
         text-align: center;
         border-radius: 15px 0 15px 0;

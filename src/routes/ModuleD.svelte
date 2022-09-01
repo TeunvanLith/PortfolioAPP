@@ -4,6 +4,7 @@
     import Clock from './clock.svelte'
     import Calculator from './calculator.svelte'
     import Todo from './todo.svelte'
+    import CircleProg from './progression30.svelte'
     let clock = false;
     let calculator = false;
     let todo = false;
