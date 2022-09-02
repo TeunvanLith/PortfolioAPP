@@ -2,7 +2,7 @@
     import Button from './button.svelte';
     import  {createEventDispatcher} from 'svelte';
     const dispatch = createEventDispatcher();
-    import { fade } from 'svelte/transition';
+    import { fade, fly } from 'svelte/transition';
 
     let text = "Kies"
     let colorA = "#04a7f4"
@@ -18,7 +18,7 @@
 </script>
 <div class="containerModules">
     {#if moduleA}
-    <div transition:fade class="containerModule" style="border: 3px solid {colorA}">
+    <div in:fly="{{ y: 200, duration: 2000 }}" out:fade class="containerModule" style="border: 3px solid {colorA}">
         <h1 style="color:{colorA}">Games</h1>
         <h2>Snake</h2>
         <div class="containerButton">
@@ -28,7 +28,7 @@
     {/if}
 
     {#if moduleB}
-    <div transition:fade class="containerModule" style="border: 3px solid {colorB}">
+    <div in:fly="{{ y: 200, duration: 2500 }}" out:fade class="containerModule" style="border: 3px solid {colorB}">
         <h1 style="color:{colorB}">Work</h1>
         <h2>Tip 'n Top Reviews</h2>
         <div class="containerButton">
@@ -38,7 +38,7 @@
     {/if}
 
        {#if moduleD}
-    <div transition:fade class="containerModule" style="border: 3px solid {colorD}">
+    <div in:fly="{{ y: -200, duration: 3000 }}" out:fade class="containerModule" style="border: 3px solid {colorD}">
         <h1 style="color:{colorD}">Tools</h1>
         <h2>Calculator</h2><br />
         <h2>To do</h2><br />
@@ -50,7 +50,7 @@
     {/if}
 
     {#if moduleC}
-    <div transition:fade class="containerModule" style="border: 3px solid {colorC}">
+    <div in:fly="{{ y: -200, duration: 3500 }}" out:fade class="containerModule" style="border: 3px solid {colorC}">
         <h1 style="color:{colorC}">About me</h1>
         <h2>Contact me</h2>
         <div class="containerButton">

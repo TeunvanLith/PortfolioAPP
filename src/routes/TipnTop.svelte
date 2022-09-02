@@ -1,6 +1,6 @@
 <script>
     import TiptopStore from "./stores/TiptopStore"
-    import { fade } from 'svelte/transition'
+    import { fade, fly } from 'svelte/transition'
     import Users from './stores/UserStore'
     import TaskStore from './stores/TaskStore'
     
@@ -16,6 +16,7 @@
     let alertVisible = false;
 
     let introtext = "Geef uw mening!"
+    let outrotext = "Dank voor uw mening!"
 
     const addXP = (xp) => {
             Users.update(users => {
@@ -78,13 +79,18 @@
     <div class="inputs">
         <h1>Tip n Top</h1>
         <div class="intro">
+        {#if $Users.task004 = false}
         <p>{introtext}</p>
+        {/if}
+        {#if $Users.task004 = true}
+        <p>{outrotext}</p>
+        {/if}
         </div>
 
-        {#if !check}
+        {#if $Users.task004 = false}
         <div class="inputfields">
-                <textarea class="input itip" bind:value={tip} placeholder="Wat is uw tip?" maxlength="200" rows="4"></textarea>
-                <textarea class="input itop" bind:value={top} placeholder="Wat is uw top?" maxlength="200" rows="4"></textarea>
+                <textarea in:fly="{{ x: -200, duration: 2000 }}" out:fade class="input itip" bind:value={tip} placeholder="Wat is uw tip?" maxlength="200" rows="4"></textarea>
+                <textarea in:fly="{{ x: 200, duration: 2000 }}" out:fade class="input itop" bind:value={top} placeholder="Wat is uw top?" maxlength="200" rows="4"></textarea>
         </div>
             {#if alertVisible}
             <div class="alerts">{alerttip}<br />{alerttop}</div>
@@ -93,7 +99,7 @@
         {/if}
     </div>
 
-    <div class="output">
+    <div in:fly="{{ x: -200, duration: 2000 }}" out:fade class="output">
         <div class="tops">
             <h1>Tips</h1>
             <div class="cardz">
@@ -103,7 +109,7 @@
             </div>
         </div>
         
-        <div class="tops">
+        <div in:fly="{{ x: 300, duration: 2000 }}" out:fade class="tops">
             <h1>Tops</h1>
             <div class="cardz">
             {#each $TiptopStore as e}
