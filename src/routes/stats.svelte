@@ -7,20 +7,17 @@
 
 <div class="container">
     {#each $UserStore as user}
-        {#if user.xp >= 1400}
-            <div class="containerAvatar"><img src="{user.profielAfbeelding}" alt="avatar"></div>
-            <div class="containerNaam">{user.voornaam} {user.achternaam}</div>
-            <div class="containerBedrijf">{user.bedrijfsnaam}</div>
-            <progress id="xpbar" class="xpbar completed" max="1400" value="{user.xp}"></progress>
-            <div class="containerXP"><p class="FULL">Collected all XP</p></div>
-        {/if}
-    {:else}
-        {#if user.user_ID === ID}
+          {#if user.user_ID === ID}
             <div class="containerAvatar"><img src="{user.profielAfbeelding}" alt="avatar"></div>
             <div class="containerNaam">{user.voornaam} {user.achternaam}</div>
             <div class="containerBedrijf">{user.bedrijfsnaam}</div>
             <progress id="xpbar" class="xpbar" max="1400" value="{user.xp}"></progress>
-            <div class="containerXP"><p class="XP">{user.xp} xdp</p></div>
+            {#if user.xp == 1400}
+            <div class="containerXP"><p class="FULL">Collected all XP</p></div>
+            {/if}
+            {#if user.xp < 1400}
+            <div class="containerXP"><p class="XP">{user.xp} xp</p></div>
+            {/if}
         {/if}
     {/each}
     {#if !ID}
