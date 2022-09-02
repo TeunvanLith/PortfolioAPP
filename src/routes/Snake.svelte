@@ -179,8 +179,8 @@ startButton.addEventListener('click', startGame)
     <h1>Snake</h1>
     <h2>Score&nbsp;<span id="score"></span></h2>
     <div id="grid" class="grid"><div id="gameover" class="gameover"></div></div>
-    <button id="start">Start/Restart</button><button on:click={ () => {mobile = !mobile;}}>Buttons aan/uit</button>
-        {#if window.innerWidth < 1400 || mobile}
+    <button id="start">Start/Restart</button>
+        {#if window.innerWidth < 1200 || mobile}
             <div class="mobileButtons">
                 <div class="buttons-snake up" on:click={ () => {control(38)}}><i class="fa-solid fa-circle-chevron-up"></i></div><br />
                 <div class="buttons-snake left" on:click={ () => {control(37)}}><i class="fa-solid fa-circle-chevron-left"></i></div>
@@ -188,7 +188,7 @@ startButton.addEventListener('click', startGame)
                 <div class="buttons-snake right" on:click={ () => {control(39)}}><i class="fa-solid fa-circle-chevron-right"></i></div>
             </div>
         {/if}
-        {#if window.innerWidth > 1400}
+        {#if window.innerWidth > 1200}
     <div class="uitleg"><p>Gebruik de pijltjes toetsen om te snake te besturen.</p></div>
     {/if}
 </div>
@@ -269,7 +269,7 @@ button:hover {
     justify-content: center;
     width: 360px;
     margin: 10px auto;
-    padding-bottom: 20px;
+    padding-bottom: 120px;
 }
 
 .uitleg {
