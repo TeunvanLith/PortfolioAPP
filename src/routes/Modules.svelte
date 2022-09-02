@@ -3,7 +3,6 @@
     import  {createEventDispatcher} from 'svelte';
     const dispatch = createEventDispatcher();
     import { fade } from 'svelte/transition';
-    import { onMount } from 'svelte';
 
     let text = "Kies"
     let colorA = "#04a7f4"
@@ -11,17 +10,10 @@
     let colorC = "#b60f55"
     export let colorD = "#11753c"
 
-    let moduleA = false
-    let moduleB = false
-    let moduleC = false
-    let moduleD = false
-
-    onMount( () => {
-        setTimeout(() => {moduleA = true},300)
-        setTimeout(() => {moduleB = true},600)
-        setTimeout(() => {moduleD = true},900)
-        setTimeout(() => {moduleC = true},1200)
-    })
+    let moduleA = true
+    let moduleB = true
+    let moduleC = true
+    let moduleD = true
 
 </script>
 <div class="containerModules">
@@ -73,11 +65,11 @@
     .containerModules {
         width: 80%;
         margin: 0px auto;
-        padding-top: 100px;
+        padding-top: 50px;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        padding-bottom: 100px;
+        padding-bottom: 50px;
     }
 
     .containerModule {
@@ -87,7 +79,7 @@
         background-color: rgba(31, 31, 31, .5);
         border: 1px solid rgb(31, 31, 31);
         position: relative;
-        margin: 50px 10px;
+        margin: 10px 10px;
     }
 
     h1 {

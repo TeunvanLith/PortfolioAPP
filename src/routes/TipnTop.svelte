@@ -3,6 +3,7 @@
     import { fade } from 'svelte/transition'
     import Users from './stores/UserStore'
     import TaskStore from './stores/TaskStore'
+    
     export let ID;
 
     // DATA
@@ -73,7 +74,7 @@
     };
 </script>
 
-<div class="tipntop">
+<div transition:fade class="tipntop">
     <div class="inputs">
         <h1>Tip n Top</h1>
         <div class="intro">

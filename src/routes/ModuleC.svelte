@@ -3,6 +3,7 @@
     import Prog75 from "./progression75.svelte"
     import Prog60 from "./progression60.svelte"
     import Prog30 from "./progression30.svelte"
+    import { fade } from 'svelte/transition';
     export let theme
     export let ID
     let updated = 1;
@@ -21,19 +22,21 @@
             })
     }
 
+    let visible = false;
     let a = false;
     let b = false;
     let c = false;
 
     onMount (() => {
+        setTimeout(() => {visible = true},200)
         setTimeout(() => {a = true},500)
         setTimeout(() => {b = true},1000)
         setTimeout(() => {c = true},1500)
         setTimeout(() => {addXP(200)},2000)
     })
 </script>
-
-<div class="containerModuleC">
+{#if visible}
+<div transition:fade class="containerModuleC">
     <div class="containerlinks">
         <div class="introtext bct">
                 <h1>About me:</h1>
@@ -88,6 +91,7 @@
         </div>
     </div>
 </div>
+{/if}
 <style>
     img {
         position: absolute;
