@@ -2,15 +2,9 @@
     import { onMount} from "svelte";
     import Tasks from '../routes/stores/TaskStore';
     import Users from '../routes/stores/UserStore';
-    import { createEventDispatcher} from 'svelte'
-    const dispatch = createEventDispatcher();
     export let ID;
 
     let root;
-    let arrowLeft;
-    let arrowRight;
-    let arrowUp;
-    let arrowDown;
     let direction = 1;
     const width = 15;
     let mobile = false;
@@ -48,8 +42,8 @@ let score = 0
 let updated = false;
 
 // Timers
-let intervalTime = 1000
-let speed = 0.9
+let intervalTime = 900
+let speed = 0.95
 let timerId = 0
 
 // Creating Playing Field
@@ -114,7 +108,7 @@ function startGame() {
     //re add new score to browser
     scoreDisplay.innerHTML = score
     direction = 1
-    intervalTime = 1000
+    intervalTime = 800
     generateApple()
     //read the class of snake to our new snakes
     currentSnake.forEach(index => squares[index].classList.add('snakesnake'))
@@ -122,7 +116,7 @@ function startGame() {
 }
 
 function move() {
-    if (score === 3 && !updated) {
+    if (score === 2 && !updated) {
         taskChecked()
         updated = true;
     }

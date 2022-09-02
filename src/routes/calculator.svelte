@@ -32,7 +32,6 @@ numbers.forEach(handleInput);
 
 const checkMillion = () => {
       let total = parseInt(output.innerHTML);
-      console.log(total)
       if (total > 1000000 ) {
             Tasks.update(task => {
                 let copyTasks = [...task];

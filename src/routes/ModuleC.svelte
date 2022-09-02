@@ -26,7 +26,6 @@
     let c = false;
 
     onMount (() => {
-        console.log(updated)
         setTimeout(() => {a = true},500)
         setTimeout(() => {b = true},1000)
         setTimeout(() => {c = true},1500)

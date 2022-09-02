@@ -3,24 +3,31 @@
     export let ID;
     import { createEventDispatcher} from 'svelte';
     const dispatch = createEventDispatcher();
-    import Button from './button.svelte';
-    let preset = true;
 </script>
 
 <div class="container">
     {#each $UserStore as user}
+        {#if user.xp >= 1400}
+            <div class="containerAvatar"><img src="{user.profielAfbeelding}" alt="avatar"></div>
+            <div class="containerNaam">{user.voornaam} {user.achternaam}</div>
+            <div class="containerBedrijf">{user.bedrijfsnaam}</div>
+            <progress id="xpbar" class="xpbar completed" max="1400" value="{user.xp}"></progress>
+            <div class="containerXP"><p class="FULL">Collected all XP</p></div>
+        {/if}
+    {:else}
         {#if user.user_ID === ID}
-    <div class="containerAvatar"><img src="{user.profielAfbeelding}" alt="avatar"></div>
-    <div class="containerNaam">{user.voornaam} {user.achternaam}</div>
-    <div class="containerBedrijf">{user.bedrijfsnaam}</div>
-    <progress id="xpbar" class="xpbar" max="1300" value="{user.xp}"></progress>
-    <div class="containerXP"><p class="XP">{user.xp} xp</p></div>
+            <div class="containerAvatar"><img src="{user.profielAfbeelding}" alt="avatar"></div>
+            <div class="containerNaam">{user.voornaam} {user.achternaam}</div>
+            <div class="containerBedrijf">{user.bedrijfsnaam}</div>
+            <progress id="xpbar" class="xpbar" max="1400" value="{user.xp}"></progress>
+            <div class="containerXP"><p class="XP">{user.xp} xdp</p></div>
         {/if}
     {/each}
     {#if !ID}
     <h1>Maak account aan en verdien xp!</h1>
     <button class="button" on:click={ () => {dispatch('account')}}>Creëer account</button>
     {/if}
+
 </div>
 
 
@@ -82,6 +89,7 @@ progress[value]::-webkit-progress-value {
     transition: 1s easy-in-out;
 }
 
+
 h1 { 
  padding: 10px;
  font-family: 'Dancing Script', cursive;
@@ -105,5 +113,10 @@ button{
  button:hover {
     background-color: #fff;
     color: #04a7f4;
+}
+
+.FULL {
+        font-size: 14px;
+        color:gold;
 }
 </style>
