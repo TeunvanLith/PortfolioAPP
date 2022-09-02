@@ -38,7 +38,7 @@ const checkMillion = () => {
                 let copyTasks = [...task];
                 let changeTask = copyTasks.find((task) => task.id == "002");
                 changeTask.completed = "&#9745;";
-                addXP(200);
+                addXP(200)
                 return copyTasks;
 
             })
@@ -50,8 +50,10 @@ const checkMillion = () => {
         Users.update(users => {
                 let copyUsers = [...users];
                 let changeUser = copyUsers.find((user) => user.user_ID == ID);
+                if (changeUser.task002 ==  false) {
                 changeUser.xp = changeUser.xp + xp;
-               
+                changeUser.task002 = true;
+                }
                 return copyUsers;
 
             })

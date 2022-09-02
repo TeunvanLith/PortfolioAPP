@@ -4,7 +4,8 @@
     const dispatch = createEventDispatcher();
 
     let text = "Start";
-   
+    let testen = false;
+    
     const openAccount = () => {
         dispatch('openAccount');
     }
@@ -17,7 +18,9 @@
     <div class="container">
         <div class="Button">
     <button on:click={openAccount}>Creëer account</button>
+    {#if testen}
     <button on:click={openModules}>Modules</button>
+    {/if}
         </div>
     </div>
 

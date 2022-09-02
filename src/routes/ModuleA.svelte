@@ -3,7 +3,7 @@
     export let ID;
 </script>
 
-<Snake ID={ID}/>
+<Snake ID={ID} />
 
 <style>
 

@@ -12,6 +12,7 @@
 	import Back from "./back.svelte"
 	import Tasks from "./tasks.svelte"
 	import Snake from "./Snake.svelte"
+	import Users from "./stores/UserStore"
 
     let account = false
 	let start = true
@@ -39,7 +40,9 @@
 
 	let theme = "orange";
 
-	let currentID;
+	let ID = 0;
+	let xp;
+
 
 </script>
 
@@ -49,11 +52,11 @@
 	{/if}
 
     {#if account}
-	<ModalA on:closeStart={ () => {start = true; account = false}} on:closeModal={ (e) => {account = false; modules = true; currentID = e.detail.ID; console.log(currentID)}}/>
+	<ModalA on:closeStart={ () => {start = true; account = false}} on:closeModal={ (e) => {account = false; modules = true; ID = e.detail.ID;}}/>
 	{/if}
 
     {#if modules || moduleA || moduleB || moduleC || moduleD}
-	<Stats ID={currentID} on:account={ () => {modules = false, account = true}} />
+	<Stats ID={ID} on:account={ () => {modules = false, moduleA = false, moduleB = false, moduleC = false, moduleD = false, account = true}} />
 	{/if}
 
 	{#if modules}
@@ -65,19 +68,19 @@
 	{/if}
 
     {#if moduleA}
-	<ModuleA ID={currentID}/>
+	<ModuleA ID={ID}/>
 	{/if}
 
 	{#if moduleB}
-	<ModuleB ID={currentID}/>
+	<ModuleB ID={ID}/>
 	{/if}
 
 	{#if moduleC}
-	<ModuleC theme={theme} ID={currentID}/>
+	<ModuleC {theme} {ID}/>
 	{/if}
 
 	{#if moduleD}
-	<ModuleD ID={currentID} />
+	<ModuleD ID={ID} />
 	{/if}
 
 	{#if moduleA || moduleB || moduleC || moduleD}

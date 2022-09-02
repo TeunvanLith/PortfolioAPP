@@ -1,4 +1,4 @@
-<script type="typescript">
+<script>
     import TiptopStore from "./stores/TiptopStore"
     import { fade } from 'svelte/transition'
     import Users from './stores/UserStore'
@@ -6,24 +6,25 @@
     export let ID;
 
     // DATA
-    let tip:string;
-    let top:string;
-    let naam:string;
+    let tip;
+    let top;
+    let check;
 
     let alerttip = "";
     let alerttop = "";
     let alertVisible = false;
 
     let introtext = "Geef uw mening!"
-    let check = false;
 
-    const addXP = (xp:number) => {
+    const addXP = (xp) => {
             Users.update(users => {
-                    let copyUsers = [...users];
-                    let changeUser = copyUsers.find((user) => user.user_ID == ID);
-                    changeUser.xp = changeUser.xp + xp;
-                    check = true;
-                    return copyUsers;
+                let copyUsers = [...users];
+                let changeUser = copyUsers.find((user) => user.user_ID == ID);
+                if (changeUser.task004 ==  false) {
+                changeUser.xp = changeUser.xp + xp;
+                changeUser.task004 = true;
+                }
+                return copyUsers;
 
                 })
     }
@@ -49,8 +50,8 @@
 
             check = true;
             introtext = "Bedankt voor uw mening!"
-            addXP(400);
-
+            addXP(400)
+            
             const data = {
                 Tip: tip,
                 Top: top,

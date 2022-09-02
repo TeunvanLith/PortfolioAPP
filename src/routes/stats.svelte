@@ -85,6 +85,7 @@ progress[value]::-webkit-progress-value {
 h1 { 
  padding: 10px;
  font-family: 'Dancing Script', cursive;
+ font-size: 24px;
  font-weight: 700;
 }
 

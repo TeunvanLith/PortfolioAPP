@@ -14,13 +14,13 @@ const TaskStore = writable([{
 },
 {
     module: "C",
-    task: "Draai een informatie kaart om.",
+    task: "Bekijk mijn profiel",
     completed: 	"&#9744;",
     id: "005",
 },
 {
     module: "D",
-    task: "Maak drie to do's aan",
+    task: "Maak een to do aan",
     completed: "&#9744;",
     id: "001",
 },

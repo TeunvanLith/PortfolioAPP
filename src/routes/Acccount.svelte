@@ -94,7 +94,13 @@
             xp: 0,
             profielAfbeelding,
             user_ID: Math.floor(Math.random() * 10000),
-            current: true
+            current: true,
+            task001: false,
+            task002: false,
+            task003: false,
+            task004: false,
+            task005: false,
+            task006: false
         };
 
         currentUser = user.user_ID;

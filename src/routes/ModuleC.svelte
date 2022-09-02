@@ -5,7 +5,7 @@
     import Prog30 from "./progression30.svelte"
     export let theme
     export let ID
-    let updated = true;
+    let updated = 1;
     import { onMount } from "svelte"
 
 
@@ -13,8 +13,10 @@
         UserStore.update(users => {
                 let copyUsers = [...users];
                 let changeUser = copyUsers.find((user) => user.user_ID == ID);
+                if (changeUser.task005 ==  false) {
                 changeUser.xp = changeUser.xp + xp;
-               
+                changeUser.task005 = true;
+                }
                 return copyUsers;
             })
     }
@@ -24,10 +26,11 @@
     let c = false;
 
     onMount (() => {
+        console.log(updated)
         setTimeout(() => {a = true},500)
         setTimeout(() => {b = true},1000)
         setTimeout(() => {c = true},1500)
-        setTimeout(() => { if (updated) {addXP(200), updated = false;}},2000)
+        setTimeout(() => {addXP(200)},2000)
     })
 </script>
 

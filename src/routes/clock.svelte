@@ -1,14 +1,14 @@
 <script>
-    import { onMount } from 'svelte'
+    import { onMount, onDestroy } from 'svelte'
     import Tasks from '../routes/stores/TaskStore'
     import Users from '../routes/stores/UserStore'
-    export let ID
+    export let ID = 0;
     // GET TIME //
 
-    let getHours
-    let getMinutes
-    let getSeconds
-    let getDate
+    let getHours = 0;
+    let getMinutes = 0;
+    let getSeconds = 0;
+    let getDate = 0;
 
     const getTime = () => {
         const time = new Date();
@@ -21,8 +21,9 @@
                 getHours = getHours - 12
             }
     } 
-    setInterval(getTime, 100);
     
+    
+
     // CHECK IF WIN // 
 
     const checkTime = () => {
@@ -31,7 +32,7 @@
                 let copyTasks = [...task];
                 let changeTask = copyTasks.find((task) => task.id == "003");
                 changeTask.completed = "&#9745;";
-                addXP(300);
+                addXP(300)
                 return copyTasks;
 
             })
@@ -43,20 +44,24 @@
         Users.update(users => {
                 let copyUsers = [...users];
                 let changeUser = copyUsers.find((user) => user.user_ID == ID);
+                if (changeUser.task003 ==  false) {
                 changeUser.xp = changeUser.xp + xp;
-               
+                changeUser.task003 = true;
+                }
                 return copyUsers;
 
             })
     }
     
     // ROTERS BINDING //
-    let hours
-    let minutes 
-    let seconds 
+    let hours = 0;
+    let minutes = 0;
+    let seconds = 0;
 
     // ROTATE CLOCK //
     onMount( () => {
+    
+       const interval = setInterval(getTime, 100);
 
        const changeTime = () => {
     
@@ -69,7 +74,13 @@
        seconds.style.transform = `rotate(${degSeconds}deg)`;
        }
        
-       setInterval(changeTime, 100) 
+       const starter = setInterval(changeTime, 100);
+
+       return () => { 
+        clearInterval(interval);
+        clearInterval(starter);
+
+       }
     })  
 
   

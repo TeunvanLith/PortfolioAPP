@@ -2,6 +2,8 @@
     import { onMount} from "svelte";
     import Tasks from '../routes/stores/TaskStore';
     import Users from '../routes/stores/UserStore';
+    import { createEventDispatcher} from 'svelte'
+    const dispatch = createEventDispatcher();
     export let ID;
 
     let root;
@@ -80,17 +82,18 @@ const taskChecked = () => {
     })
 }
 
-    const addXP = (xp) => {
+const addXP = (xp) => {
         Users.update(users => {
                 let copyUsers = [...users];
                 let changeUser = copyUsers.find((user) => user.user_ID == ID);
+                if (changeUser.task006 ==  false) {
                 changeUser.xp = changeUser.xp + xp;
-               
+                changeUser.task006 = true;
+                }
                 return copyUsers;
 
             })
-}
-
+	}
 // Starting Snakes
 currentSnake.forEach(index => squares[index].classList.add('snakesnake'))
 

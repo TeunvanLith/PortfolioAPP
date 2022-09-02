@@ -32,12 +32,12 @@
     }
 
     const checkTask = () => {
-          if (countTodo >= 3) {
+          if (countTodo >= 1) {
             Tasks.update(task => {
                 let copyTasks = [...task];
                 let changeTask = copyTasks.find((task) => task.id == "001");
                 changeTask.completed = "&#9745;";
-                addXP(100);
+                addXP(100)                
                 return copyTasks;
 
             })
@@ -49,8 +49,10 @@
         Users.update(users => {
                 let copyUsers = [...users];
                 let changeUser = copyUsers.find((user) => user.user_ID == ID);
+                if (changeUser.task001 ==  false) {
                 changeUser.xp = changeUser.xp + xp;
-               
+                changeUser.task001 = true;
+                }
                 return copyUsers;
 
             })
