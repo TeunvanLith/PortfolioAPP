@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 
 const TiptopStore = writable([{
-    Tip: "Meer spelletjes met schieten",
+    Tip: "Meer spelletjes",
     Top: "Veel interactieve elementen."
 }]);
 
