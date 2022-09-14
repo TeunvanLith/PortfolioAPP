@@ -15,13 +15,13 @@
 	import Users from "./stores/UserStore"
 
     let account = false
-	let start = false
+	let start = true
 	let stats = false
 	let modules = false
 	let moduleA = false
 	let moduleB = false
 	let moduleC = false
-	let moduleD = true
+	let moduleD = false
 	let clock = false
 	let back = false
 	let task = false
