@@ -137,14 +137,14 @@
     }
 
     #hours {
-        width: 4px;
+        width: 2px;
         height: 35px; 
         background-color: #11753c;
         transform-origin: 0 100%;
     }
 
     #minutes {
-        width: 4px;
+        width: 2px;
         height: 60px;
         background-color: rgb(42, 42, 42);
         transform-origin: 0 100%;  
@@ -152,7 +152,7 @@
 
     #seconds {
         background-color: #484848;
-        width: 4px;
+        width: 2px;
         height: 70px;
         transform-origin: 0 100%;
     }

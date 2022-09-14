@@ -77,26 +77,32 @@
 
 <div transition:fade class="tipntop">
     <div class="inputs">
+     
+        
+    {#each $Users as user}
+        {#if user.task004 == false}
         <h1>Tip n Top</h1>
         <div class="intro">
-        {#if $Users.task004 = false}
         <p>{introtext}</p>
-        {/if}
-        {#if $Users.task004 = true}
-        <p>{outrotext}</p>
-        {/if}
         </div>
-
-        {#if $Users.task004 = false}
         <div class="inputfields">
                 <textarea in:fly="{{ x: -200, duration: 2000 }}" out:fade class="input itip" bind:value={tip} placeholder="Wat is uw tip?" maxlength="200" rows="4"></textarea>
                 <textarea in:fly="{{ x: 200, duration: 2000 }}" out:fade class="input itop" bind:value={top} placeholder="Wat is uw top?" maxlength="200" rows="4"></textarea>
         </div>
+        
             {#if alertVisible}
             <div class="alerts">{alerttip}<br />{alerttop}</div>
             {/if}
             <button on:click={addTipnTop}>Toevoegen</button>
         {/if}
+        
+        {#if user.task004 == true}
+        <h1>Tip n Top</h1>
+        <div class="intro">
+        <p>{outrotext}</p>
+        </div>
+        {/if}
+    {/each}
     </div>
 
     <div in:fly="{{ x: -200, duration: 2000 }}" out:fade class="output">

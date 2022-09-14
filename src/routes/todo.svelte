@@ -11,9 +11,9 @@
     let task001 = false;
 
     let prioriteiten = [
-    'Zo snel mogelijk', 
-    'Vandaag', 
-    'Binnenkort'];
+    'Meteen', 
+    'Snel', 
+    'Vandaag'];
 
     let Todos = [];
 
@@ -62,35 +62,38 @@
     <h1>To do</h1>
 
     <div class="input">
-        <input type="text" class="" bind:value={tdName} placeholder="Taak"><br />
-        <input type="number" class="" bind:value={tdTime} placeholder="Aantal minuten"><br />
-        {#each prioriteiten as p}
-        <div class="prioriteiten">
-	    <span class="td-lb">
-		<input class="td-cb" type=checkbox bind:group={tdPrio} name="prios" value={p}><p class="priotext">{p}</p>
-        </span><br />
+        <div class="inputtop">
+            <input type="text" class="taak" bind:value={tdName} placeholder="Taak" maxlength="20">
+            <input type="number" class="tijd" bind:value={tdTime} placeholder="Aantal minuten" oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="3">
+            <button class="btn toevoegen" on:click={addnewTodo}>Toevoegen</button>   
         </div>
-        {/each}
-        <br />
-        <button class="btn" on:click={addnewTodo}>Toevoegen</button>
+        <div class="inputbottom">
+            {#each prioriteiten as p}
+            <div class="prioriteiten">
+            <span class="td-lb">
+            <input class="td-cb" type=checkbox bind:group={tdPrio} name="prios" value={p}><p class="priotext">{p}</p>
+            </span>
+            </div>
+            {/each}
+        </div>
     </div>
 
     <div class="output">
         <ul>
             {#each Todos as todo}
-            {#if todo.Prio == "Zo snel mogelijk"}
+            {#if todo.Prio == "Meteen"}
             <div class="todobox red" transition:fade>
-                <li class="td-li">{todo.Name} <br />{todo.Time} min | {todo.Prio}<div class="del-btn" on:click={ () => {deleteTodo(todo.ID)}}>X</div></li>
+                <li class="td-li">{todo.Name} <br /> {todo.Time} min | {todo.Prio}<div class="del-btn" on:click={ () => {deleteTodo(todo.ID)}}>X</div></li>
+            </div>
+            {/if}
+            {#if todo.Prio == "Snel"}
+            <div class="todobox orange" transition:fade>
+                <li class="td-li">{todo.Name} <br /> {todo.Time} min | {todo.Prio}<div class="del-btn" on:click={ () => {deleteTodo(todo.ID)}}>X</div></li>
             </div>
             {/if}
             {#if todo.Prio == "Vandaag"}
-            <div class="todobox orange" transition:fade>
-                <li class="td-li">{todo.Name} <br />{todo.Time} min | {todo.Prio}<div class="del-btn" on:click={ () => {deleteTodo(todo.ID)}}>X</div></li>
-            </div>
-            {/if}
-            {#if todo.Prio == "Binnenkort"}
             <div class="todobox yellow" transition:fade>
-                <li class="td-li">{todo.Name} <br />{todo.Time} min | {todo.Prio}<div class="del-btn" on:click={ () => {deleteTodo(todo.ID)}}>X</div></li>
+                <li class="td-li">{todo.Name} <br /> {todo.Time} min | {todo.Prio}<div class="del-btn" on:click={ () => {deleteTodo(todo.ID)}}>&#9745;</div></li>
             </div>
             {/if}
             {/each}
@@ -109,6 +112,34 @@
     margin: 0 auto;
 }
 
+.inputtop {
+    display: grid;
+    grid-template-areas: 
+    "one one two"
+    "three three two"
+}
+
+.inputbottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-radius: 0 0 10px 0;
+    background-color: #001528;
+    border: 1px solid #444;
+}
+
+.taak {
+    grid-area: one;
+    border-radius: 10px 0 0 0;
+}
+
+.tijd {
+    grid-area: three;
+}
+
+.toevoegen {
+    grid-area: two;
+}
+
 input {
     background-color: #001528;
     border: 1px solid #444;
@@ -116,7 +147,6 @@ input {
     padding: 10px;
     font-weight: 600;
     text-align: center;
-    margin: 0 auto;
 }
 
 input:focus {
@@ -126,17 +156,12 @@ input:focus {
 
 button{
      color: white;
-     height: 50px;
-     width: 130px;
      background-color: #11753c;
      cursor: pointer;
      font-weight: 700;
      font-size: 14px;
      letter-spacing: 1px;
      border:none;
-     margin-right: 10px;
-     border-radius: 15px 0 15px 0;
-     margin-top: 10px;
  }
 
  button:hover {
@@ -151,9 +176,13 @@ button{
 .prioriteiten {
     height: 20px;
     padding: 5px;
-    line-height: 20px;
     text-align: left;
-    padding-left: 50px;
+    font-size: 14px;
+    border-right: 1px solid #444;
+}
+
+.inputbottom :last-child {
+    border-right: 0px solid #444;
 }
 
 .todobox {
@@ -184,6 +213,8 @@ ul {
   padding-left: 0;
 }
 
+/* Button */
+
 .del-btn {
     position: absolute;
     top: 8px;
@@ -191,8 +222,8 @@ ul {
     color: #fff;
     height: 20px;
     width: 20px;
-    background-color: rgb(181, 15, 15);
-    border-radius: 5px 0 5px 0;
+    background-color: #666;
+    border-radius: 10px;
     line-height: 20px;
 }
 
@@ -203,7 +234,8 @@ ul {
 
 .priotext {
     display: inline-block;
-    margin-left: 20px;
+    margin: 0;
+    padding-left: 5px;
 }
 
 h1 {

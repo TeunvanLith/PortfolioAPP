@@ -36,7 +36,7 @@
     })
 </script>
 {#if visible}
-<div transition:fade class="containerModuleC">
+<div out:fade="{{ duration: 200 }}" class="containerModuleC">
     <div class="containerlinks">
         <div class="introtext bct">
                 <h1>About me:</h1>

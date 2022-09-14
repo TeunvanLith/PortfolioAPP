@@ -15,13 +15,13 @@
 	import Users from "./stores/UserStore"
 
     let account = false
-	let start = true
+	let start = false
 	let stats = false
 	let modules = false
 	let moduleA = false
 	let moduleB = false
 	let moduleC = false
-	let moduleD = false
+	let moduleD = true
 	let clock = false
 	let back = false
 	let task = false
@@ -34,7 +34,7 @@
 			moduleB = false;
 			moduleC = false;
 			moduleD = false;
-			modules = true;
+            setTimeout(() => {modules = true;},400)
 		}
 	}
 
