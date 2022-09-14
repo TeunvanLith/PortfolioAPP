@@ -83,12 +83,12 @@
             {#each Todos as todo}
             {#if todo.Prio == "Meteen"}
             <div class="todobox red" transition:fade>
-                <li class="td-li">{todo.Name} <br /> {todo.Time} min | {todo.Prio}<div class="del-btn" on:click={ () => {deleteTodo(todo.ID)}}>X</div></li>
+                <li class="td-li">{todo.Name} <br /> {todo.Time} min | {todo.Prio}<div class="del-btn" on:click={ () => {deleteTodo(todo.ID)}}>&#9745;</div></li>
             </div>
             {/if}
             {#if todo.Prio == "Snel"}
             <div class="todobox orange" transition:fade>
-                <li class="td-li">{todo.Name} <br /> {todo.Time} min | {todo.Prio}<div class="del-btn" on:click={ () => {deleteTodo(todo.ID)}}>X</div></li>
+                <li class="td-li">{todo.Name} <br /> {todo.Time} min | {todo.Prio}<div class="del-btn" on:click={ () => {deleteTodo(todo.ID)}}>&#9745;</div></li>
             </div>
             {/if}
             {#if todo.Prio == "Vandaag"}
@@ -105,6 +105,7 @@
 .input {
     width: 300px;
     margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 .output {
