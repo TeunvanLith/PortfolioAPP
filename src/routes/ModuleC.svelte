@@ -39,27 +39,31 @@
 <div out:fade="{{ duration: 200 }}" class="containerModuleC">
     <div class="containerlinks">
         <div class="introtext bct">
-                <h1>About me:</h1>
-                <p>Beste toekomstig werkgever,<br />
+                <h2>Beste toekomstig werkgever,</h2>
+                <p>
                 Mijn naam is Teun van Lith en ik ben een startende webdeveloper. <br />
                 <br />
                 Als je mijn achtergrond weet zou je misschien de stap naar webdeveloper bijzonder vinden. Op dit moment ben ik namelijk ook eigenaar van twee prachtige ondernemingen, Wilgen Training & Uitjesboerderij Leekzicht.
                 Respectievelijk een sportschool en recreatieboerderij. <br />
                 <br />
                 Al op jonge leeftijd ben ik altijd een ondernemend type geweest. <br />
-                Wat eerst is begonnen met timmeren werd later, computeren en het bouwen van 3D werelden om in te spelen. De uitdaging om iets nieuws en creatiefs te bouwen is daarin altijd sterk aanwezig geweest. <br />
+                Wat eerst is begonnen met timmeren werd later computeren en het bouwen van 3D werelden om in te spelen. De uitdaging om iets nieuws en creatiefs te bouwen is daarin altijd sterk aanwezig geweest. <br />
                 <br />
                 Wanneer ik startte met Wilgen Training had ik een website nodig. Hier is de passie voor webdevelopment gestart. 
-                Gaande weg leerde ik een website bouwen via verschillende youtube filmpjes en cursussen op Udemy.
+                Gaande weg leerde ik een website bouwen via verschillende youtube filmpjes en cursussen.
                 Mijn eerste website werd gebouwd met behulp van wordpress. 
-                Prima en goed, maar ergens bleef de drang om het van scratch te doen bestaan. 
+                Prima en goed, maar ergens bleef de drang om het helemaal zelf te doen. 
                 Met eerste HTML en vervolgens CSS kon ik beginnen met de eerste stappen, het aanpassen van de wordpress via de costum css inputs. <br />
                 <br />
-                Na jaren wat minder te leren, kwam ik uiteindelijk weer via het werk in aanraking met het bouwen van een website.
+                Na jaren af en toe wat kleine projecten, kwam ik uiteindelijk via mijn werk in aanraking met het bouwen van een tool voor een website.
                 Het nieuwe project moest een logboek worden voor de sporters van Wilgen Training, waarin ze hun voortgang zouden kunnen noteren.
                 Hiervoor kwam ik in aanraking met Javascript, om vervolgens al snel met Svelte & SvelteKit als framework te gaan werken. <br />
                 <br />
-                Na veel oefen projecten ben ik nu toe aan een serieuze stap in de wereld van het webdevelopment. Een baan en opdrachten voor verschillende klanten bouwen.
+                Na veel kleine projecten ben ik nu toe aan een serieuze stap in de wereld van het webdevelopment. De beste manier om iets te laten groeien is een zaadje planten.
+                Ik zou daaorm graag bij een bedrijf een zaadje planten en groeien in dit vakgebied.<br />
+                <br />
+                Met vriendelijke groet, <br />
+                Teun van Lith
                 </p>
             </div>
         </div>
