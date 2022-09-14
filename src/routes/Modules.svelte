@@ -21,6 +21,10 @@
     <div in:fly="{{ y: 200, duration: 2000 }}" out:fade class="containerModule" style="border: 3px solid {colorA}">
         <h1 style="color:{colorA}">Games</h1>
         <h2>Snake</h2>
+        <p style="font-weight: 700; letter-spacing: 1px; color:{colorA}">Binnenkort:</p>
+        <h2>Space Invaders</h2>
+        <h2>Pokémon</h2>
+        
         <div class="containerButton">
         <Button {text} on:click={ () => {dispatch('showModuleA')}}/>
         </div>
