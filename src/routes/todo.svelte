@@ -65,7 +65,7 @@
 
 </script>
 <div class="containertodo">
-    <h1>To do</h1>
+    <h1>To do list</h1>
 
     <div class="input">
         <div class="inputtop">
