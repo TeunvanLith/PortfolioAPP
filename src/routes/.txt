@@ -1,0 +1,55 @@
+/* 
+function shootRocket() {
+        if (rocketAmmo > 0) {
+        let timerRocket
+        let currentRocketIndex = hero - width
+        squares[currentRocketIndex].classList.add('rocket')
+        rocketAmmo--
+        ammoDisplay.innerHTML = `Mines: ${mineAmmo} Rockets: ${rocketAmmo} Lasers: ${laserAmmo} Gun: ${gunAmmo}`
+        
+        function moveRocket() {
+            if (currentRocketIndex - width < 0) {
+                clearInterval(timerRocket)
+                squares[currentRocketIndex].classList.remove('rocket')
+            } else {
+            squares[currentRocketIndex].classList.remove('rocket')
+            currentRocketIndex -= width
+            squares[currentRocketIndex].classList.add('rocket')
+            }              
+           
+        }
+        timerRocket = setInterval (moveRocket, 200)
+        } else
+          console.log("You're out of rockets")
+}
+
+function placeMine() {
+         if (mineAmmo > 0) {
+  
+         let currentMineIndex = hero-width
+         squares[currentMineIndex].classList.add('mine')
+         mineAmmo--
+         ammoDisplay.innerHTML = `Mines: ${mineAmmo} Rockets: ${rocketAmmo} Lasers: ${laserAmmo} Gun: ${gunAmmo}`
+         } else {} 
+}
+
+function shootLaser() {
+          if (laserAmmo > 0) {       
+          let currentLaserIndex = 
+          [(hero-width),(hero-width-width),(hero-width-width),(hero-width-width-width),(hero-width-width-width-width),(hero-width-width-width-width-width),(hero-width-width-width-width-width-width),(hero-width-width-width-width-width-width-width),(hero-width-width-width-width-width-width-width-width),(hero-width-width-width-width-width-width-width-width-width),(hero-width-width-width-width-width-width-width-width-width-width),(hero-width-width-width-width-width-width-width-width-width-width-width),(hero-width-width-width-width-width-width-width-width-width-width-width-width),(hero-width-width-width-width-width-width-width-width-width-width-width-width-width),(hero-width-width-width-width-width-width-width-width-width-width-width-width-width-width),(hero-width-width-width-width-width-width-width-width-width-width-width-width-width-width)]
+         laserAmmo--
+         ammoDisplay.innerHTML = `Mines: ${mineAmmo} Rockets: ${rocketAmmo} Lasers: ${laserAmmo} Gun: ${gunAmmo}`
+         
+         let laserTime = 400
+        
+         for (let i = 0; i < currentLaserIndex.length; i++) {
+         squares[currentLaserIndex[i]].classList.add('laser')}
+  
+         for (let i = 0; i < currentLaserIndex.length; i++) {
+         laserTime = laserTime - 10
+         setTimeout(()=> squares[currentLaserIndex[i]].classList.remove('laser'), laserTime)}
+          } else
+            console.log(`You're out of laser power`)
+        
+}
+*/

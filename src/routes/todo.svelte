@@ -8,22 +8,29 @@
     let tdTime;
     let tdPrio = '';
     let countTodo = 0;
-    let task001 = false;
-
     let prioriteiten = [
     'Meteen', 
     'Snel', 
     'Vandaag'];
-
+    
     let Todos = [];
+    
+    let task001 = false;
+
+    let alertvisible = false;
 
     const addnewTodo = () => {
+        if (tdName.length > 4 && tdTime > 0 && tdPrio.length > 0) {
+        alertvisible = false;
         let newTodo = {Name: tdName, Time: tdTime, Prio: tdPrio, ID: Math.random()};
         Todos = [...Todos, newTodo];
         tdName = '';
         tdTime = '';
         countTodo = countTodo + 1;
         checkTask();
+    } else {
+        alertvisible = true;
+    }
     }
 
     const deleteTodo = (id) => {
@@ -39,9 +46,7 @@
                 changeTask.completed = "&#9745;";
                 addXP(100)                
                 return copyTasks;
-
-            })
-
+                })
           }
     }
 
@@ -57,16 +62,20 @@
 
             })
     }
+
 </script>
 <div class="containertodo">
     <h1>To do</h1>
 
     <div class="input">
         <div class="inputtop">
-            <input type="text" class="taak" bind:value={tdName} placeholder="Taak" maxlength="20">
+            <input type="text" class="taak inputred" bind:value={tdName} placeholder="Taak" maxlength="20">
             <input type="number" class="tijd" bind:value={tdTime} placeholder="Aantal minuten" oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="3">
-            <button class="btn toevoegen" on:click={addnewTodo}>Toevoegen</button>   
+            <button class="btn toevoegen" on:click={addnewTodo}>Toevoegen</button>  
         </div>
+        {#if alertvisible}
+        <div class="redbox"></div>
+        {/if}
         <div class="inputbottom">
             {#each prioriteiten as p}
             <div class="prioriteiten">
@@ -155,6 +164,12 @@ input:focus {
     outline: none;
 }
 
+.redbox { 
+    width: 100%;
+    height: 5px;
+    background-color: rgb(175, 6, 6);
+    box-sizing: border-box;
+}
 button{
      color: white;
      background-color: #11753c;
@@ -190,22 +205,22 @@ button{
     height: 60px;
     width: 300px;
     margin: 0 auto;
-    border-radius: 15px 0 15px 0;
+    border-radius: 0 0 15px  0;
     position: relative;
     margin-top: 10px;
     background: #222;
 }
 
 .red {
-    border: 1px solid red;
+    border-left: 5px solid red;
 }
 
 .orange {
-    border: 1px solid orange;
+    border-left: 5px solid orange;
 }
 
 .yellow {
-    border: 1px solid yellow;
+    border-left: 5px solid yellow;
 }
 
 ul { 

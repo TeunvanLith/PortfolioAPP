@@ -87,7 +87,7 @@
 	<Back on:toggleBack={toggleBack} theme={theme}/>
 	{/if}
 
-	{#if moduleB || moduleD || moduleA }
+	{#if moduleB || moduleD }
 	<Tasks theme={theme} a={moduleA} b={moduleB} c={moduleC} d={moduleD}/>
 	{/if} 
 </main>
