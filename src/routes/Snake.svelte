@@ -116,7 +116,7 @@ function startGame() {
 }
 
 function move() {
-    if (score === 2 && !updated) {
+    if (score === 10 && !updated) {
         taskChecked()
         updated = true;
     }

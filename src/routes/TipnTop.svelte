@@ -81,7 +81,7 @@
         
     {#each $Users as user}
         {#if user.task004 == false}
-        <h1>Tip n Top</h1>
+        <h1>Tip 'n Top</h1>
         <div class="intro">
         <p>{introtext}</p>
         </div>
@@ -97,7 +97,7 @@
         {/if}
         
         {#if user.task004 == true}
-        <h1>Tip n Top</h1>
+        <h1>Tip 'n Top</h1>
         <div class="intro">
         <p>{outrotext}</p>
         </div>

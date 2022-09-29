@@ -1,6 +1,5 @@
 <script>
-	import { onMount } from "svelte";
-    import './global.css'
+	import './global.css'
     import ModalA from "./ModalA.svelte"
     import Start from "./Start.svelte"
     import Stats from "./stats.svelte"
@@ -11,8 +10,6 @@
 	import ModuleD from "./ModuleD.svelte"
 	import Back from "./back.svelte"
 	import Tasks from "./tasks.svelte"
-	import Snake from "./Snake.svelte"
-	import Users from "./stores/UserStore"
 
     let account = false
 	let start = true
@@ -76,7 +73,7 @@
 	{/if}
 
 	{#if moduleC}
-	<ModuleC {theme} {ID}/>
+	<ModuleC {theme} ID={ID}/>
 	{/if}
 
 	{#if moduleD}
@@ -87,7 +84,7 @@
 	<Back on:toggleBack={toggleBack} theme={theme}/>
 	{/if}
 
-	{#if moduleB || moduleD }
+	{#if moduleB || moduleD || moduleA }
 	<Tasks theme={theme} a={moduleA} b={moduleB} c={moduleC} d={moduleD}/>
 	{/if} 
 </main>

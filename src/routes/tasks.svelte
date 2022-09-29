@@ -1,16 +1,24 @@
 <script>
   import Tasks from './stores/TaskStore'
-  import { onMount } from 'svelte';
   export let a
   export let b
   export let c
   export let d
   export let theme = "#fff"
 
-</script>
+  let tasks = true;
 
+  </script>
+
+    {#if !tasks}
     <div class="tasks" style="border: 1px solid {theme}; border-bottom: 0px">
-        <p class="head-tasks" style="color: {theme}">Tasks</p>
+        <p class="head-tasks" style="color: {theme}">Tasks <i class="fa-solid fa-chevron-up toggle" on:click={ () => {tasks = !tasks }}></i></p>
+    </div>
+    {/if}
+
+    {#if tasks}
+    <div class="tasks" style="border: 1px solid {theme}; border-bottom: 0px">
+        <p class="head-tasks" style="color: {theme}">Tasks <i class="fa-solid fa-chevron-down toggle" on:click={ () => {tasks = !tasks }}></i> </p>
         <div class="containertasks">
         {#each $Tasks as task}
             {#if a}
@@ -56,6 +64,7 @@
         {/each}
     </div>
     </div>
+    {/if}
 
 <style>
 .tasks {
@@ -87,5 +96,9 @@ p {
 }
 .containertasks {
     margin-top: 20px;
+}
+
+.toggle {
+    cursor: pointer;
 }
 </style>
